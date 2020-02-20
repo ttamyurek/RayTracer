@@ -38,12 +38,16 @@ public:
 		this->vertical = this->upDir * focalDistance * tan(verticalFOV / 2.0f); // Y = c * tan(FOV / 2) * B
 		this->horizontal = rightDir * focalDistance * tan(verticalFOV * aspectRatio / 2.0f); // X = c * tan( FOV * (w/h) / 2 ) * A
 
-		/*
-		float sx = (i + 0.5) / IMAGE_WIDTH;
-			float sy = (j + 0.5) / IMAGE_HEIGHT;
+	}
 
-			glm::vec3 Point = center + (2.0f*sx - 1.0f) * horizontal + (2.0f*sy - 1.0f) * vertical;
-			glm::vec3 RayDirection = glm::normalize(Point - camPos);
-			//RayTrace(Point*/
+	void shootRay(int row, int col)
+	{
+		float sx = (row + 0.5) / imageWidth;
+		float sy = (col + 0.5) / imageHeight;
+
+		Vector point = center + horizontal * (2.0f*sx - 1.0f) + vertical * (2.0f*sy - 1.0f);  // P = M + (2 * sx - 1) * X + (2 * sy - 1) * Y
+		Vector rayDirection = (point - position).normalize; // P - E
+
+		//return Ray(position, rayDirection);
 	}
 };
