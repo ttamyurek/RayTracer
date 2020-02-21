@@ -1,4 +1,4 @@
-﻿Build started 2/20/2020 1:44:18 PM.
+﻿Build started 2/20/2020 4:36:09 PM.
      1>Project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" on node 2 (Build target(s)).
      1>Building with tools version "15.0".
        Target "EnableIntermediateOutputPathMismatchWarning" skipped, due to false condition; ('$(RestoreProjectStyle)' == 'PackageReference') was evaluated as ('' == 'PackageReference').
@@ -25,7 +25,7 @@
          VSTEL_SolutionSessionID={C55F357F-8E72-49A0-B5E9-D0D620E779A8}
        Done executing task "SetEnv".
        Task "SetEnv"
-         VSTEL_CurrentSolutionBuildID=1472570281
+         VSTEL_CurrentSolutionBuildID=1482880765
        Done executing task "SetEnv".
        Task "SetEnv"
          VSTEL_ProjectID={01FC25C1-09C3-4F14-B502-EF8488EC27E6}
@@ -37,7 +37,7 @@
      1>Target "_PrepareForReferenceResolution" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "ResolveReferences" depends on it):
        Task "Message" skipped, due to false condition; ('$(_REFERENCE_DEBUG)'=='true') was evaluated as (''=='true').
      1>Done building target "_PrepareForReferenceResolution" in project "RayTracer.vcxproj".
-       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('Vector.cpp'!='' and 'false'=='true' and '' != 'false').
+       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('main.cpp;Vector.cpp'!='' and 'false'=='true' and '' != 'false').
      1>Target "BeforeResolveReferences" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "ResolveReferences" depends on it):
      1>Done building target "BeforeResolveReferences" in project "RayTracer.vcxproj".
      1>Target "AssignProjectConfiguration" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "ResolveReferences" depends on it):
@@ -136,7 +136,7 @@
        Done executing task "MakeDir".
      1>Done building target "PrepareForBuild" in project "RayTracer.vcxproj".
        Target "_PrepareForReferenceResolution" skipped. Previously built successfully.
-       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('Vector.cpp'!='' and 'false'=='true' and '' != 'false').
+       Target "ComputeCrtSDKReference" skipped, due to false condition; ('@(ClCompile)'!='' and '$(WindowsAppContainer)'=='true' and '$(UseCrtSDKReference)' != 'false') was evaluated as ('main.cpp;Vector.cpp'!='' and 'false'=='true' and '' != 'false').
        Target "GetInstalledSDKLocations" skipped, due to false condition; ('@(SDKReference)' != '') was evaluated as ('' != '').
      1>Target "ResolveSDKReferences" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "ResolveAssemblyReferences" depends on it):
        Task "ResolveSDKReference" skipped, due to false condition; ('@(SDKReference)'!='') was evaluated as (''!='').
@@ -251,6 +251,7 @@
        Task "Message" skipped, due to false condition; ('$(_REFERENCE_DEBUG)'=='true') was evaluated as (''=='true').
      1>Done building target "ComputeReferenceCLInput" in project "RayTracer.vcxproj".
      1>Target "WarnCompileDuplicatedFilename" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_ClCompile" depends on it):
+       Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'main.cpp' != 'main.cpp' and 'x64\Debug\' == 'x64\Debug\').
        Task "VCMessage" skipped, due to false condition; ('%(ClCompile.ExcludedFromBuild)' != 'true' and '%(Filename)%(Extension)' != '@(ClCompile->'%(Filename)%(Extension)')' and '%(ObjectFileName)' == '@(ClCompile->Metadata(ObjectFileName)->Distinct())') was evaluated as ('' != 'true' and 'Vector.cpp' != 'Vector.cpp' and 'x64\Debug\' == 'x64\Debug\').
      1>Done building target "WarnCompileDuplicatedFilename" in project "RayTracer.vcxproj".
      1>Target "FixupCLCompileOptions" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_ClCompile" depends on it):
@@ -271,28 +272,33 @@
      1>Target "SelectClCompile" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "ClCompile" depends on it):
      1>Done building target "SelectClCompile" in project "RayTracer.vcxproj".
        Target "GenerateTargetFrameworkMonikerAttribute" skipped, due to false condition; ('$(GenerateTargetFrameworkAttribute)' == 'true') was evaluated as ('false' == 'true').
-       Target "ManagedIncrementalBuildPreProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('Vector.cpp' != '' and 'false' == 'True').
+       Target "ManagedIncrementalBuildPreProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('main.cpp;Vector.cpp' != '' and 'false' == 'True').
      1>Target "ClCompile" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_ClCompile" depends on it):
        Task "Delete" skipped, due to false condition; ('%(ClCompile.DebugInformationFormat)' != '' and '%(ClCompile.DebugInformationFormat)' != 'None' and '%(ClCompile.DebugInformationFormat)' != 'OldStyle' and '%(ClCompile.ProgramDataBaseFileName)' != '' and !Exists(%(ClCompile.ProgramDataBaseFileName))) was evaluated as ('EditAndContinue' != '' and 'EditAndContinue' != 'None' and 'EditAndContinue' != 'OldStyle' and 'x64\Debug\vc141.pdb' != '' and !Exists(x64\Debug\vc141.pdb)).
        Task "CL" skipped, due to false condition; ('%(ClCompile.PrecompiledHeader)' == 'Create' and '%(ClCompile.ExcludedFromBuild)'!='true' and '%(ClCompile.CompilerIteration)' == '') was evaluated as ('NotUsing' == 'Create' and ''!='true' and '' == '').
        Using "CL" task from assembly "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll".
        Task "CL"
-         Outputs for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\VECTOR.CPP:
+         Read Tracking Logs:
+         	x64\Debug\RayTracer.tlog\CL.read.1.tlog
+         Outputs for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\VECTOR.CPP:
+         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ
          	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ
-         Vector.cpp will be compiled because the tracking log is not available.
-         Write Tracking log not available, minimal rebuild will be disabled.
+         main.cpp will be compiled because it was not found in the tracking log.
+         Outputs for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP:
+         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ
+         Write Tracking Logs:
+         	x64\Debug\RayTracer.tlog\CL.write.1.tlog
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=1612
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt Vector.cpp
+           VS_UNICODE_OUTPUT=1380
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt main.cpp
          Tracking command:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\VECTOR.CPP /b MSBuildConsole_CancelEventd78ea40d11ea4d5aa98445c4d7eae42d  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt Vector.cpp
-         Vector.cpp
-     1>c:\users\tarik\documents\github\raytracer\raytracer\vector.h(89): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-     1>c:\users\tarik\documents\github\raytracer\raytracer\vector.cpp(77): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP /b MSBuildConsole_CancelEvent17356a8466274e278bb774d2dfda2c43  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\tarik\documents\github\raytracer\raytracer\vector.h(90): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
        Done executing task "CL".
      1>Done building target "ClCompile" in project "RayTracer.vcxproj".
        Target "RunSelectedFileNativeCodeAnalysis" skipped, due to false condition; ('$(RunCppAnalysis)'=='true' and '$(SelectedFiles)'!='') was evaluated as ('false'=='true' and ''!='').
-       Target "ManagedIncrementalBuildPostProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('Vector.cpp' != '' and 'false' == 'True').
+       Target "ManagedIncrementalBuildPostProcessDependencyGraph" skipped, due to false condition; ('@(ClCompile)' != '' and '$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('main.cpp;Vector.cpp' != '' and 'false' == 'True').
      1>Target "AfterClCompile" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_ClCompile" depends on it):
      1>Done building target "AfterClCompile" in project "RayTracer.vcxproj".
      1>Target "_ClCompile" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildCompileAction" depends on it):
@@ -403,29 +409,153 @@
        Using "Link" task from assembly "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll".
        Task "Link"
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=1656
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.lib" /MACHINE:X64 x64\Debug\Vector.obj
+           VS_UNICODE_OUTPUT=784
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\Vector.obj
          Tracking command:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ /b MSBuildConsole_CancelEvent1f390ef50b324462b85ef2f62b4c8e4f  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.lib" /MACHINE:X64 x64\Debug\Vector.obj
-     1>LINK : fatal error LNK1561: entry point must be defined
-         The command exited with code 1561.
-       Done executing task "Link" -- FAILED.
-     1>Done building target "Link" in project "RayTracer.vcxproj" -- FAILED.
-     1>Done Building Project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (Build target(s)) -- FAILED.
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r "C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ" /b MSBuildConsole_CancelEvent8e483fb6a395411caf37a9e8a13ece19  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.lib" /MACHINE:X64 x64\Debug\main.obj
+         x64\Debug\Vector.obj
+       Done executing task "Link".
+       Task "Message"
+         RayTracer.vcxproj -> C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe
+       Done executing task "Message".
+       Task "VCMessage" skipped, due to false condition; (('$(EmbedManifestBy)' != 'LINK' or '$(LegacyManifestEmbedding)' != 'true' or '$(LinkSkippedExecution)' == 'true') and
+                    %(Link.GenerateDebugInformation) == 'DebugFastLink' and %(Link.ProgramDataBaseFileName) != '') was evaluated as (('LINK' != 'LINK' or '' != 'true' or 'False' == 'true') and
+                    DebugFastLink == 'DebugFastLink' and  != '').
+       Task "VCMessage" skipped, due to false condition; (('$(EmbedManifestBy)' != 'LINK' or '$(LegacyManifestEmbedding)' != 'true' or '$(LinkSkippedExecution)' == 'true') and
+                    %(Link.GenerateDebugInformation) == 'true' and %(Link.ProgramDataBaseFileName) != '') was evaluated as (('LINK' != 'LINK' or '' != 'true' or 'False' == 'true') and
+                    DebugFastLink == 'true' and  != '').
+     1>Done building target "Link" in project "RayTracer.vcxproj".
+       Target "MetaGenInputsOutputs" skipped, due to false condition; ('$(EnableManagedIncrementalBuild)' == 'True') was evaluated as ('false' == 'True').
+       Target "ComputeMetaGenInputs" skipped, due to false condition; ('$(CLRSupport)'!='' and '$(CLRSupport)'!='false') was evaluated as ('false'!='' and 'false'!='false').
+       Target "MetaGen" skipped, due to false condition; ('@(MetaGen)' != '') was evaluated as ('' != '').
+     1>Target "ComputeLinkImportLibraryOutputsForClean" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_Link" depends on it):
+       Task "WriteLinesToFile" skipped, due to false condition; ('@(_LinkSecondaryOutput)' != '') was evaluated as ('' != '').
+     1>Done building target "ComputeLinkImportLibraryOutputsForClean" in project "RayTracer.vcxproj".
+     1>Target "AfterLink" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_Link" depends on it):
+     1>Done building target "AfterLink" in project "RayTracer.vcxproj".
+     1>Target "_Link" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_Link" in project "RayTracer.vcxproj".
+     1>Target "_ALink" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_ALink" in project "RayTracer.vcxproj".
+       Target "ComputeLegacyManifestEmbedding" skipped. Previously built successfully.
+     1>Target "_Manifest" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+       Task "CallTarget" skipped, due to false condition; ('$(LegacyManifestEmbedding)' == 'true') was evaluated as ('' == 'true').
+     1>Done building target "_Manifest" in project "RayTracer.vcxproj".
+     1>Target "RegisterOutput" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+       Task "Exec" skipped, due to false condition; ('$(ConfigurationType)'=='DynamicLibrary' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'!='true') was evaluated as ('Application'=='DynamicLibrary' and 'false'=='true' and 'false'!='true').
+       Task "Exec" skipped, due to false condition; ('$(ConfigurationType)'=='DynamicLibrary' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'=='true') was evaluated as ('Application'=='DynamicLibrary' and 'false'=='true' and 'false'=='true').
+       Task "Exec" skipped, due to false condition; ('$(ConfigurationType)'=='Application' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'!='true') was evaluated as ('Application'=='Application' and 'false'=='true' and 'false'!='true').
+       Task "Exec" skipped, due to false condition; ('$(ConfigurationType)'=='Application' and '%(Link.RegisterOutput)'=='true' and '%(Link.PerUserRedirection)'=='true') was evaluated as ('Application'=='Application' and 'false'=='true' and 'false'=='true').
+       Task "VCMessage" skipped, due to false condition; ('$(_RegisterOutputExitCode)' != '' and '$(_RegisterOutputExitCode)' != '0') was evaluated as ('' != '' and '' != '0').
+     1>Done building target "RegisterOutput" in project "RayTracer.vcxproj".
+       Target "PrepareForBuild" skipped. Previously built successfully.
+       Target "ResolveReferences" skipped. Previously built successfully.
+     1>Target "ResolvedXDCMake" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_XdcMake" depends on it):
+       Task "MSBuild" skipped, due to false condition; ('%(_MSBuildProjectReferenceExistent.Extension)' == '.vcxproj' and '@(ProjectReferenceWithConfiguration)' != '' and '@(_MSBuildProjectReferenceExistent)' != '' and '$(_ClCompileGenerateXMLDocumentationFiles)' == 'true') was evaluated as ('' == '.vcxproj' and '' != '' and '' != '' and '' == 'true').
+     1>Done building target "ResolvedXDCMake" in project "RayTracer.vcxproj".
+     1>Target "ComputeCLCompileGeneratedXDCFiles" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_XdcMake" depends on it):
+     1>Done building target "ComputeCLCompileGeneratedXDCFiles" in project "RayTracer.vcxproj".
+     1>Target "MakeDirsForXdcMake" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_XdcMake" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForXdcMake" in project "RayTracer.vcxproj".
+       Target "XdcMake" skipped, due to false condition; ('@(XdcMake)' != '') was evaluated as ('' != '').
+     1>Target "_XdcMake" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_XdcMake" in project "RayTracer.vcxproj".
+     1>Target "ComputeCLCompileGeneratedSbrFiles" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BscMake" depends on it):
+     1>Done building target "ComputeCLCompileGeneratedSbrFiles" in project "RayTracer.vcxproj".
+     1>Target "MakeDirsForBscMake" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BscMake" depends on it):
+       Task "MakeDir"
+       Done executing task "MakeDir".
+     1>Done building target "MakeDirsForBscMake" in project "RayTracer.vcxproj".
+       Target "BscMake" skipped, due to false condition; ('@(BscMake)' != '') was evaluated as ('' != '').
+       Target "CustomBuildStep" skipped, due to false condition; ('@(CustomBuildStep)' != '' and '$(SelectedFiles)'=='') was evaluated as ('' != '' and ''=='').
+     1>Target "_BscMake" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_BscMake" in project "RayTracer.vcxproj".
+     1>Target "_GenerateSatelliteAssemblyInputs" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "CreateSatelliteAssemblies" depends on it):
+       Task "Warning" skipped, due to false condition; ('@(ManifestResourceWithCulture)'!='' and '%(ManifestResourceWithCulture.EmittedForCompatibilityOnly)'=='') was evaluated as (''!='' and ''=='').
+       Task "Warning" skipped, due to false condition; ('@(ManifestNonResxWithCultureOnDisk)'!='' and '%(ManifestNonResxWithCultureOnDisk.EmittedForCompatibilityOnly)'=='') was evaluated as (''!='' and ''=='').
+     1>Done building target "_GenerateSatelliteAssemblyInputs" in project "RayTracer.vcxproj".
+       Target "ComputeIntermediateSatelliteAssemblies" skipped, due to false condition; (@(ReferenceSatellitePaths->'%(DestinationSubDirectory)') != '') was evaluated as ( != '').
+       Target "GenerateSatelliteAssemblies" skipped, due to false condition; ('@(_SatelliteAssemblyResourceInputs)' != '') was evaluated as ('' != '').
+     1>Target "CreateSatelliteAssemblies" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "CreateSatelliteAssemblies" in project "RayTracer.vcxproj".
+     1>Target "_Appverifier" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_Appverifier" in project "RayTracer.vcxproj".
+     1>Target "_Deploy" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "_Deploy" in project "RayTracer.vcxproj".
+       Target "ComputeIntermediateSatelliteAssemblies" skipped, due to false condition; (@(ReferenceSatellitePaths->'%(DestinationSubDirectory)') != '') was evaluated as ( != '').
+       Target "_CopyFilesMarkedCopyLocal" skipped, due to false condition; ('@(ReferenceCopyLocalPaths)' != '') was evaluated as ('' != '').
+       Target "AssignTargetPaths" skipped. Previously built successfully.
+       Target "_SplitProjectReferencesByFileExistence" skipped. Previously built successfully.
+       Target "_GetProjectReferenceTargetFrameworkProperties" skipped. Previously built successfully.
+     1>Target "GetCopyToOutputDirectoryXamlAppDefs" in file "C:\Windows\Microsoft.NET\Framework\v4.0.30319\Microsoft.Xaml.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "GetCopyToOutputDirectoryItems" depends on it):
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+     1>Done building target "GetCopyToOutputDirectoryXamlAppDefs" in project "RayTracer.vcxproj".
+     1>Target "GetCopyToOutputDirectoryItems" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_CopySourceItemsToOutputDirectory" depends on it):
+       Task "MSBuild" skipped, due to false condition; ('@(_MSBuildProjectReferenceExistent)' != '' and '$(_GetChildProjectCopyToOutputDirectoryItems)' == 'true' and '%(_MSBuildProjectReferenceExistent.Private)' != 'false' and '$(UseCommonOutputDirectory)' != 'true') was evaluated as ('' != '' and 'true' == 'true' and '' != 'false' and 'false' != 'true').
+       Task "AssignTargetPath"
+       Done executing task "AssignTargetPath".
+     1>Done building target "GetCopyToOutputDirectoryItems" in project "RayTracer.vcxproj".
+       Target "_CopyOutOfDateSourceItemsToOutputDirectory" skipped, due to false condition; ( '@(_SourceItemsToCopyToOutputDirectory)' != '' ) was evaluated as ( '' != '' ).
+       Target "_CopyOutOfDateSourceItemsToOutputDirectoryAlways" skipped, due to false condition; ( '@(_SourceItemsToCopyToOutputDirectoryAlways)' != '' ) was evaluated as ( '' != '' ).
+     1>Target "_CopySourceItemsToOutputDirectory" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "CopyFilesToOutputDirectory" depends on it):
+     1>Done building target "_CopySourceItemsToOutputDirectory" in project "RayTracer.vcxproj".
+       Target "_CopyAppConfigFile" skipped, due to false condition; ( '@(AppConfigWithTargetPath)' != '' ) was evaluated as ( '' != '' ).
+       Target "_CopyManifestFiles" skipped, due to false condition; ( '$(_DeploymentCopyApplicationManifest)'=='true' or '$(GenerateClickOnceManifests)'=='true' ) was evaluated as ( ''=='true' or ''=='true' ).
+     1>Target "_CheckForCompileOutputs" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "CopyFilesToOutputDirectory" depends on it):
+     1>Done building target "_CheckForCompileOutputs" in project "RayTracer.vcxproj".
+       Target "_SGenCheckForOutputs" skipped, due to false condition; ('$(_SGenGenerateSerializationAssembliesConfig)' == 'On' or ('@(WebReferenceUrl)'!='' and '$(_SGenGenerateSerializationAssembliesConfig)' == 'Auto')) was evaluated as ('Off' == 'On' or (''!='' and 'Off' == 'Auto')).
+     1>Target "CopyFilesToOutputDirectory" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "PrepareForRun" depends on it):
+       Task "Copy" skipped, due to false condition; ('$(CopyBuildOutputToOutputDirectory)' == 'true' and '$(SkipCopyBuildProduct)' != 'true') was evaluated as ('true' == 'true' and 'true' != 'true').
+       Task "CopyRefAssembly" skipped, due to false condition; ('$(ProduceReferenceAssembly)' == 'true' and '$(CopyBuildOutputToOutputDirectory)' == 'true' and '$(SkipCopyBuildProduct)' != 'true') was evaluated as ('false' == 'true' and 'true' == 'true' and 'true' != 'true').
+       Task "Message" skipped, due to false condition; ('$(CopyBuildOutputToOutputDirectory)' == 'true' and '$(SkipCopyBuildProduct)'!='true') was evaluated as ('true' == 'true' and 'true'!='true').
+       Task "Copy" skipped, due to false condition; ('@(AddModules)' != '') was evaluated as ('' != '').
+       Task "Copy" skipped, due to false condition; ('$(_SGenDllCreated)'=='true') was evaluated as ('false'=='true').
+       Task "Copy" skipped, due to false condition; ('$(_DebugSymbolsProduced)'=='true' and '$(SkipCopyingSymbolsToOutputDirectory)' != 'true' and '$(CopyOutputSymbolsToOutputDirectory)'=='true') was evaluated as ('false'=='true' and '' != 'true' and 'true'=='true').
+       Task "Copy" skipped, due to false condition; ('$(_DocumentationFileProduced)'=='true') was evaluated as ('false'=='true').
+       Task "Copy" skipped, due to false condition; ('@(IntermediateSatelliteAssembliesWithTargetPath)' != '') was evaluated as ('' != '').
+       Task "Copy" skipped, due to false condition; ('@(ReferenceComWrappersToCopyLocal)' != '' or '@(ResolvedIsolatedComModules)' != '' or '@(_DeploymentLooseManifestFile)' != '' or '@(NativeReferenceFile)' != '' ) was evaluated as ('' != '' or '' != '' or '' != '' or '' != '' ).
+       Task "Copy" skipped, due to false condition; ('$(SkipCopyWinMDArtifact)' != 'true' and '@(WinMDExpArtifacts)' != '') was evaluated as ('' != 'true' and '' != '').
+       Task "Message" skipped, due to false condition; ('$(SkipCopyWinMDArtifact)' != 'true' and '$(_WindowsMetadataOutputPath)' != '') was evaluated as ('' != 'true' and '' != '').
+     1>Done building target "CopyFilesToOutputDirectory" in project "RayTracer.vcxproj".
+     1>Target "PrepareForRun" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+     1>Done building target "PrepareForRun" in project "RayTracer.vcxproj".
+       Target "CustomBuildStep" skipped, due to false condition; ('@(CustomBuildStep)' != '' and '$(SelectedFiles)'=='') was evaluated as ('' != '' and ''=='').
+     1>Target "PostBuildEvent" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_BuildLinkAction" depends on it):
+       Task "Message" skipped, due to false condition; ('%(PostBuildEvent.Message)' != '' and '%(PostBuildEvent.Command)' != '') was evaluated as ('' != '' and '' != '').
+       Task "Exec" skipped, due to false condition; ('%(PostBuildEvent.Command)' != '') was evaluated as ('' != '').
+     1>Done building target "PostBuildEvent" in project "RayTracer.vcxproj".
+     1>Target "_BuildLinkAction" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "BuildLink" depends on it):
+     1>Done building target "_BuildLinkAction" in project "RayTracer.vcxproj".
+     1>Target "BuildLink" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Microsoft.Common.CurrentVersion.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "Build" depends on it):
+     1>Done building target "BuildLink" in project "RayTracer.vcxproj".
+     1>Target "AfterBuild" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "Build" depends on it):
+     1>Done building target "AfterBuild" in project "RayTracer.vcxproj".
+     1>Target "FinalizeBuildStatus" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppBuild.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "Build" depends on it):
+       Using "Delete" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
+       Task "Delete"
+         Deleting file "x64\Debug\RayTracer.tlog\unsuccessfulbuild".
+       Done executing task "Delete".
+       Task "Touch"
+         Touching "x64\Debug\RayTracer.tlog\RayTracer.lastbuildstate".
+       Done executing task "Touch".
+     1>Done building target "FinalizeBuildStatus" in project "RayTracer.vcxproj".
+       Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
+       Target "_CheckForInvalidConfigurationAndPlatform" skipped. Previously built successfully.
+     1>Target "Build" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.BuildSteps.Targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (entry point):
+     1>Done building target "Build" in project "RayTracer.vcxproj".
+     1>Done Building Project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
        "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (Build target) (1) ->
        (ClCompile target) -> 
-         c:\users\tarik\documents\github\raytracer\raytracer\vector.h(89): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-         c:\users\tarik\documents\github\raytracer\raytracer\vector.cpp(77): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+         c:\users\tarik\documents\github\raytracer\raytracer\vector.h(90): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 
+    1 Warning(s)
+    0 Error(s)
 
-       "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (Build target) (1) ->
-       (Link target) -> 
-         LINK : fatal error LNK1561: entry point must be defined
-
-    2 Warning(s)
-    1 Error(s)
-
-Time Elapsed 00:00:00.92
+Time Elapsed 00:00:02.32
