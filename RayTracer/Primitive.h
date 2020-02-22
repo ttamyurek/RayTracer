@@ -38,6 +38,7 @@ class Triangle : public Primitive
 	Vector v0, v1, v2;
 	Vector n0, n1, n2;
 	UV uv0, uv1, uv2;
+    bool doubleSided = false;
 
 	// TODO: Material per Vertex?
 	//Material *m0, *m1, *m2;

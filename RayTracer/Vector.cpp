@@ -101,3 +101,12 @@ void Vector::CreateNormalSpace(Vector& tangent, Vector& bitangent) const {
 		tangent = Vector(0, -z, y) / sqrtf(y * y + z * z);
 	bitangent = this->cross(tangent);
 }
+
+Vector cross(const Vector &vector1, const Vector &vector2)
+{
+    return vector1.cross(vector2);
+}
+Vector dot(const Vector &vector1, const Vector &vector2)
+{
+    return vector1.dot(vector2);
+}

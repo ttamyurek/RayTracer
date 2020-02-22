@@ -130,3 +130,5 @@ public:
 	}
 };
 
+Vector cross(const Vector &vector1, const Vector &vector2);
+Vector dot(const Vector &vector1, const Vector &vector2);
