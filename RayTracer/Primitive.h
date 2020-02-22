@@ -1,10 +1,11 @@
 #pragma once
 #include "Vector.h"
+#include "HitData.h"
 //#include "Material.h"
 
 class Primitive
 {
-
+	virtual bool Intersect(const Ray &ray, HitData &hitData);
 };
 
 class Sphere : public Primitive
@@ -22,6 +23,8 @@ class Sphere : public Primitive
 		this->center = center;
 		this->radius = radius;
 	}
+
+	bool Intersect(const Ray &ray, HitData &hitData);
 };
 
 struct UV
@@ -56,4 +59,6 @@ class Triangle : public Primitive
 		this->n2 = n2;
 		uv0.u = uv0.v = uv1.u = uv1.v = uv2.u = uv2.v = 0;
 	}
+
+	bool Intersect(const Ray &ray, HitData &hitData);
 };

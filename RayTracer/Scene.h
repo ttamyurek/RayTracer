@@ -4,29 +4,22 @@
 #include "Light.h"
 #include "Object.h"
 #include "Ray.h"
+#include "HitData.h"
 #include <vector>
-
-struct HitData
-{
-	Vector position;
-	Vector normal;
-	float t;
-	UV uv;
-	Material material;
-	Ray ray;
-	Primitive *primitive;
-};
 
 class Scene {
 public:
-	std::vector<Object> objects;
-	std::vector<Primitive> primitives;
+	std::vector<Object*> objects;
+	std::vector<Primitive*> primitives;
 	std::vector<Light> lights;
 	Camera *camera;
 
-	hitData Intersect(Ray ray)
+	HitData Intersect(Ray ray)
 	{
-
+		for (auto primitive : primitives)
+		{
+			// TODO: Intersection Algo
+		}
 	}
 
 };
