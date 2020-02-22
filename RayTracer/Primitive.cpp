@@ -2,5 +2,5 @@
 
 bool Triangle::Intersect(const Ray &ray, HitData &hitData)
 {
-	//return HitData();
+	//return HitData()
 }
