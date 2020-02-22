@@ -1,4 +1,4 @@
-﻿Build started 2/20/2020 4:36:09 PM.
+﻿Build started 2/21/2020 3:47:08 PM.
      1>Project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" on node 2 (Build target(s)).
      1>Building with tools version "15.0".
        Target "EnableIntermediateOutputPathMismatchWarning" skipped, due to false condition; ('$(RestoreProjectStyle)' == 'PackageReference') was evaluated as ('' == 'PackageReference').
@@ -25,7 +25,7 @@
          VSTEL_SolutionSessionID={C55F357F-8E72-49A0-B5E9-D0D620E779A8}
        Done executing task "SetEnv".
        Task "SetEnv"
-         VSTEL_CurrentSolutionBuildID=1482880765
+         VSTEL_CurrentSolutionBuildID=1566339750
        Done executing task "SetEnv".
        Task "SetEnv"
          VSTEL_ProjectID={01FC25C1-09C3-4F14-B502-EF8488EC27E6}
@@ -178,7 +178,7 @@
        Done executing task "WriteLinesToFile".
        Using "Touch" task from assembly "Microsoft.Build.Tasks.Core, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a".
        Task "Touch"
-         Touching "x64\Debug\RayTracer.tlog\unsuccessfulbuild".
+         Creating "x64\Debug\RayTracer.tlog\unsuccessfulbuild" because "AlwaysCreate" was specified.
        Done executing task "Touch".
      1>Done building target "InitializeBuildStatus" in project "RayTracer.vcxproj".
        Target "PrepareProjectReferences" skipped. Previously built successfully.
@@ -283,18 +283,22 @@
          Outputs for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\VECTOR.CPP:
          	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ
          	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ
-         main.cpp will be compiled because it was not found in the tracking log.
-         Outputs for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP:
-         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ
+         Vector.cpp will be compiled because C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\Vector.cpp was modified at 2/21/2020 3:37:38 PM.
+         main.cpp will be compiled because C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\VECTOR.H was modified at 2/21/2020 3:37:43 PM.
+         No output for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\VECTOR.CPP was found in the tracking log; source compilation required.
          Write Tracking Logs:
          	x64\Debug\RayTracer.tlog\CL.write.1.tlog
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=1380
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt main.cpp
+           VS_UNICODE_OUTPUT=1320
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt Vector.cpp main.cpp
          Tracking command:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP /b MSBuildConsole_CancelEvent17356a8466274e278bb774d2dfda2c43  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt main.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r "C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\MAIN.CPP|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\VECTOR.CPP" /b MSBuildConsole_CancelEvent8f657fa3121542789bd12c058b056000  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\CL.exe"  /c /ZI /JMC /nologo /W3 /WX- /diagnostics:classic /sdl /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /permissive- /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"x64\Debug\\" /Fd"x64\Debug\vc141.pdb" /Gd /TP /FC /errorReport:prompt Vector.cpp main.cpp
+         Vector.cpp
+     1>c:\users\tarik\documents\github\raytracer\raytracer\vector.h(93): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\tarik\documents\github\raytracer\raytracer\vector.cpp(83): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
          main.cpp
-     1>c:\users\tarik\documents\github\raytracer\raytracer\vector.h(90): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+     1>c:\users\tarik\documents\github\raytracer\raytracer\vector.h(93): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+         Generating Code...
        Done executing task "CL".
      1>Done building target "ClCompile" in project "RayTracer.vcxproj".
        Target "RunSelectedFileNativeCodeAnalysis" skipped, due to false condition; ('$(RunCppAnalysis)'=='true' and '$(SelectedFiles)'!='') was evaluated as ('false'=='true' and ''!='').
@@ -408,12 +412,46 @@
      1>Target "Link" in file "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.CppCommon.targets" from project "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (target "_Link" depends on it):
        Using "Link" task from assembly "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\VC\VCTargets\Microsoft.Build.CppTasks.Common.dll".
        Task "Link"
+         Write Tracking Logs:
+         	x64\Debug\RayTracer.tlog\link.write.1.tlog
+         Read Tracking Logs:
+         	x64\Debug\RayTracer.tlog\link.read.1.tlog
+         Outputs for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ:
+         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\X64\DEBUG\RAYTRACER.ILK
+         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\X64\DEBUG\RAYTRACER.EXE
+         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\X64\DEBUG\RAYTRACER.PDB
+         Inputs for C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ:
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\KERNEL32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\USER32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\GDI32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\WINSPOOL.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\COMDLG32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\ADVAPI32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\SHELL32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\OLE32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\OLEAUT32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\UUID.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\ODBC32.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UM\X64\ODBCCP32.LIB
+         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ
+         	C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ
+         	C:\WINDOWS\GLOBALIZATION\SORTING\SORTDEFAULT.NLS
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\MSVCPRTD.LIB
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\MSVCRTD.LIB
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\OLDNAMES.LIB
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\LIB\X64\VCRUNTIMED.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\LIB\10.0.17763.0\UCRT\X64\UCRTD.LIB
+         	C:\PROGRAM FILES (X86)\WINDOWS KITS\10\BIN\10.0.17763.0\X86\RC.EXE
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\BIN\HOSTX86\X86\CVTRES.EXE
+         	C:\PROGRAM FILES (X86)\MICROSOFT VISUAL STUDIO\2017\COMMUNITY\VC\TOOLS\MSVC\14.16.27023\BIN\HOSTX86\X86\MSPDBSRV.EXE
+         	C:\WINDOWS\SYSTEM32\TZRES.DLL
+         Source compilation required: input C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ is newer than output C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\X64\DEBUG\RAYTRACER.EXE.
          Environment Variables passed to tool:
-           VS_UNICODE_OUTPUT=784
+           VS_UNICODE_OUTPUT=1384
          C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.lib" /MACHINE:X64 x64\Debug\main.obj
          x64\Debug\Vector.obj
          Tracking command:
-         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r "C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ" /b MSBuildConsole_CancelEvent8e483fb6a395411caf37a9e8a13ece19  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.lib" /MACHINE:X64 x64\Debug\main.obj
+         C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\Tracker.exe /a /d "C:\Program Files (x86)\MSBuild\15.0\FileTracker\FileTracker32.dll" /i C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\x64\Debug\RayTracer.tlog /r "C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\MAIN.OBJ|C:\USERS\TARIK\DOCUMENTS\GITHUB\RAYTRACER\RAYTRACER\X64\DEBUG\VECTOR.OBJ" /b MSBuildConsole_CancelEvent6d5a811a645c40f39faee91dfa0b7bbd  /c "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\HostX86\x64\link.exe"  /ERRORREPORT:PROMPT /OUT:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG:FASTLINK /PDB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Tarik\Documents\GitHub\RayTracer\x64\Debug\RayTracer.lib" /MACHINE:X64 x64\Debug\main.obj
          x64\Debug\Vector.obj
        Done executing task "Link".
        Task "Message"
@@ -553,9 +591,11 @@ Build succeeded.
 
        "C:\Users\Tarik\Documents\GitHub\RayTracer\RayTracer\RayTracer.vcxproj" (Build target) (1) ->
        (ClCompile target) -> 
-         c:\users\tarik\documents\github\raytracer\raytracer\vector.h(90): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+         c:\users\tarik\documents\github\raytracer\raytracer\vector.h(93): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+         c:\users\tarik\documents\github\raytracer\raytracer\vector.cpp(83): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+         c:\users\tarik\documents\github\raytracer\raytracer\vector.h(93): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
 
-    1 Warning(s)
+    3 Warning(s)
     0 Error(s)
 
-Time Elapsed 00:00:02.32
+Time Elapsed 00:00:02.01

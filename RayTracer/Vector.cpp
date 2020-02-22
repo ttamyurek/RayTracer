@@ -5,6 +5,12 @@ Vector::Vector() {
 	x = y = z = 0.0f;
 }
 
+Vector::Vector(float k) {
+	x = k;
+	y = k;
+	z = k;
+}
+
 Vector::Vector(float x, float y, float z) {
 	this->x = x;
 	this->y = y;

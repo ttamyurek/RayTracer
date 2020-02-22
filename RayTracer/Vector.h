@@ -11,6 +11,9 @@ public:
 	// Initialize to (0,0,0)
 	Vector();
 
+	// Initialize to (k,k,k)
+	Vector(float k);
+
 	// Initialize to (x,y,z)
 	Vector(float x, float y, float z);
 
