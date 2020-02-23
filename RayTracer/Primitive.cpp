@@ -30,7 +30,7 @@ bool Triangle::Intersect(const Ray &ray, HitData &hitData)
         UV uv;
         uv.u = uv0.u * w + uv1.u * u + uv2.u * v;
         uv.v = uv0.v * w + uv1.v * u + uv2.v * v;
-        hitData = HitData( intersection, normal, t, uv, parent->material, ray, this);
+        hitData = HitData(true, intersection, normal, t, uv, parent->material, ray, this);
         return true;
     } else return false;
     

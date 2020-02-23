@@ -6,6 +6,10 @@ private:
 	Vector orig;
 	Vector direc;
 public:
+	Ray()
+	{
+
+	}
 	Ray(Vector origin, Vector direction)
 	{
 		this->orig = origin;
