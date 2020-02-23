@@ -3,13 +3,18 @@
 #include "HitData.h"
 //#include "Material.h"
 
+extern class Object;
+
 class Primitive
 {
-	virtual bool Intersect(const Ray &ray, HitData &hitData);
+public:
+	Object* parent;
+	virtual bool Intersect(const Ray &ray, HitData &hitData) = 0;
 };
 
 class Sphere : public Primitive
 {
+public:
 	Vector center;
 	float radius;
 	Vector xaxis;
@@ -35,6 +40,7 @@ struct UV
 
 class Triangle : public Primitive
 {
+public:
 	Vector v0, v1, v2;
 	Vector n0, n1, n2;
 	UV uv0, uv1, uv2;

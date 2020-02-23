@@ -6,6 +6,7 @@
 
 class HitData
 {
+public:
 	Vector position;
 	Vector normal;
 	float t;
@@ -19,8 +20,8 @@ class HitData
 		Vector normal,
 		float t,
 		UV uv,
-		Material material,
+		Material *material,
 		Ray ray,
-		Primitive *primitive) : position(position), normal(normal), t(t), uv(uv), material(material), ray(ray)
+		Primitive *primitive) : position(position), normal(normal), t(t), uv(uv), material(material), ray(ray), primitive(primitive)
 	{}
 };

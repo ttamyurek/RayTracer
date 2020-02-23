@@ -6,6 +6,7 @@
 
 class Object
 {
+public:
 	Vector position;
 	Vector orientation;
 	Vector scale;

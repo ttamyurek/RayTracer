@@ -3,18 +3,23 @@
 
 class Ray {
 private:
-	Vector origin;
-	Vector direction;
+	Vector orig;
+	Vector direc;
 public:
 	Ray(Vector origin, Vector direction)
 	{
-		this->origin = origin;
-		this->direction = direction;
+		this->orig = origin;
+		this->direc = direction;
 	}
-	Vector origin() {
-		return origin;
+
+	Vector origin() const {
+		return orig;
 	}
-	Vector direction() {
-		return direction;
+	Vector direction() const {
+		return direc;
+	}
+
+	Vector at(float t) const {
+		return orig + direc * t;
 	}
 };
