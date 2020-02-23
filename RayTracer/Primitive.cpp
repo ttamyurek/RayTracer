@@ -2,7 +2,8 @@
 
 bool Triangle::Intersect(const Ray &ray, HitData &hitData)
 {
-	//return HitData()
+	const float EPSILON = 0.00001;
+    
     Vector v10 = v1 - v0;
     Vector v02 = v0 - v2;
     Vector pvec = cross(ray.direction, v02);
@@ -20,7 +21,17 @@ bool Triangle::Intersect(const Ray &ray, HitData &hitData)
     if(v < 0 || u + v > 1) return false;
     
     float t = dot(v02, qvec) / det;
+    if( t > 0.0 )
+    {
+        w = 1.0 - u - v;
+        Vector intersection = ray.origin + ray.direction * t;
+        Vector normal = normalize(w * n0 + u * n1 + v * n2);
+        UV uv;
+        uv.u = w * uv0.u + u * uv1.u + v * uv2.u;
+        uv.v = w * uv0.v + u * uv1.v + v * uv2.v;
+        
+        return true;
+    } else return false;
     
-    return true;
     
 }
