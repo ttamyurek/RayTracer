@@ -122,10 +122,12 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="Primitive.h" />
     <ClInclude Include="Ray.h" />
+    <ClInclude Include="Renderer.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Vector.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="HitData.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Primitive.cpp" />
     <ClCompile Include="Vector.cpp" />

@@ -131,17 +131,17 @@ public:
 };
 
 
-Vector cross(const Vector &vector1, const Vector &vector2)
+static Vector cross(const Vector &vector1, const Vector &vector2)
 {
     return vector1.cross(vector2);
 }
 
-float dot(const Vector &vector1, const Vector &vector2)
+static float dot(const Vector &vector1, const Vector &vector2)
 {
     return vector1.dot(vector2);
 }
 
-Vector normalize(const Vector &vector)
+static Vector normalize(const Vector &vector)
 {
     return vector.normalize();
 }

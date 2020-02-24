@@ -1,9 +1,11 @@
 #pragma once
 #include "Vector.h"
-#include "HitData.h"
-//#include "Material.h"
+#include "Ray.h"
+//#include "HitData.h"
+//#include "Object.h"
 
-extern class Object;
+class HitData;
+class Object;
 
 class Primitive
 {
@@ -69,3 +71,7 @@ public:
 
 	bool Intersect(const Ray &ray, HitData &hitData);
 };
+
+
+constexpr float maxDistance = std::numeric_limits<float>::max();
+
