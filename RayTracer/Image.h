@@ -1,7 +1,6 @@
 #pragma once
 #include <vector>
 #include "Vector.h"
-#include "stb_image_write.h"
 
 typedef unsigned char uint8;
 

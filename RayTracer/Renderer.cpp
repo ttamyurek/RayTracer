@@ -1,12 +1,13 @@
 #include "Renderer.h"
+#include "Image.h"
+#include <iostream>
 
 bool Renderer::Render(Scene *scene)
 {
+	this->scene = scene;
 	int imageWidth = scene->camera->imageWidth;
 	int imageHeight = scene->camera->imageHeight;
-	int **image = new int*[imageWidth];
-	for (int i = 0; i < imageWidth; i++)
-		image[i] = new int[imageHeight];
+	Image frameBuffer(imageWidth, imageHeight);
 
 	for (int i = 0; i < imageHeight; i++)
 	{
@@ -14,12 +15,15 @@ bool Renderer::Render(Scene *scene)
 		{
 			Ray ray = scene->camera->shootRay(j, i); // (Row, Col)
 			Vector pixelColor = RenderPixel(ray);
+			frameBuffer.setPixel(i, j, pixelColor);
+			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
 	}
 
 	//TODO: Save Image
-
+	frameBuffer.save((const char*)"render.bmp");
 	//TODO: Delete Image
+	return true;
 }
 
 Vector Renderer::RenderPixel(Ray &ray)
@@ -28,6 +32,6 @@ Vector Renderer::RenderPixel(Ray &ray)
 	//TODO: shadowray (shade)
 	if (hitData.hit)
 	{
-		return Vector(0.0);
+		return Vector(1.0);
 	}
 }

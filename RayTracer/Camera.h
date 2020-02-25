@@ -22,11 +22,12 @@ public:
 
 	float aspectRatio;
 
-	Camera(const Vector position, const Vector viewDir, const Vector upDir, const float verticalFOV, const int imageWidth, const int imageHeight)
+	Camera(const Vector position, const Vector viewDir, const Vector upDir, const float focalDistance, const float verticalFOV, const int imageWidth, const int imageHeight)
 	{
 		this->position = position; // E
 		this->viewDir = viewDir.normalize();
 		this->upDir = upDir.normalize();
+		this->focalDistance = focalDistance;
 		this->verticalFOV = verticalFOV;
 
 		this->imageWidth = imageWidth;
@@ -48,7 +49,7 @@ public:
 		float sy = (col + 0.5) / imageHeight;
 
 		Vector point = center + horizontal * (2.0f * sx - 1.0f) + vertical * (2.0f * sy - 1.0f);  // P = M + (2 * sx - 1) * X + (2 * sy - 1) * Y
-		Vector rayDirection = (point - position).normalize; // P - E
+		Vector rayDirection = (point - position).normalize(); // P - E
 
 		return Ray(position, rayDirection);
 	}
