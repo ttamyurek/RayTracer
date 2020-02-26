@@ -8,7 +8,7 @@ public:
 	Vector diffuse;
 	Vector specular;
 	Vector emissive; // Self Illumination
-	float roughness;
+	float glossiness;
 	float opacity;
 	// TODO: Texture Maps
 
@@ -18,7 +18,7 @@ public:
 		diffuse = Vector(0.5f);
 		specular = Vector(1.0f);
 		emissive = Vector(0.0f);
-		roughness = 1.0f;
+		glossiness = 0.0f;
 		opacity = 1.0f;
 	}
 
@@ -28,17 +28,17 @@ public:
 		diffuse = diffColor;
 		specular = Vector(1.0f);
 		emissive = Vector(0.0f);
-		roughness = 1.0f;
+		glossiness = 0.0f;
 		opacity = 1.0f;
 	}
 
-	Material(Vector ambColor, Vector diffColor, Vector specColor, Vector emissColor, float roughLevel, float opacLevel)
+	Material(Vector ambColor, Vector diffColor, Vector specColor, Vector emissColor, float glossLevel, float opacLevel)
 	{
 		ambient = ambColor;
 		diffuse = diffColor;
 		specular = specColor;
 		emissive = emissColor;
-		roughness = roughLevel;
+		glossiness = glossLevel;
 		opacity = opacLevel;
 	}
 };

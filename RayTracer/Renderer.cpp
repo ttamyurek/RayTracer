@@ -30,6 +30,7 @@ Vector Renderer::RenderPixel(int row, int col)
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
 	HitData hitData = scene->Intersect(ray);
 	//TODO: shadowray (shade)
+	Material *material = hitData.material;
 	if (hitData.hit)
 	{
 		Vector color(0.0f);
@@ -38,9 +39,9 @@ Vector Renderer::RenderPixel(int row, int col)
 			Vector lightDir = (light->position - hitData.position).normalize();
 			Vector reflectedDir = lightDir.reflect(hitData.normal).normalize();
 
-			Vector diffComp = hitData.material->diffuse * std::max(dot(lightDir, hitData.normal), 0.0f) * hitData.material->opacity;
-			Vector specComp = hitData.material->specular * pow(std::max(dot(reflectedDir, -ray.direction()), 0.0f), 128.0f);
-			color += diffComp + specComp*0.2;
+			Vector diffComp = material->diffuse * std::max(dot(lightDir, hitData.normal), 0.0f) * material->opacity;
+			Vector specComp = material->specular * pow(std::max(dot(reflectedDir, -ray.direction()), 0.0f), material->glossiness * 128.0f);
+			color += diffComp + specComp;
 		}
 		
 		//scene->ShadowRay(hitData.position);
