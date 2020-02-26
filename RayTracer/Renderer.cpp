@@ -35,8 +35,12 @@ Vector Renderer::RenderPixel(int row, int col)
 		Vector color(0.0f);
 		for (auto light : scene->lights)
 		{
-			Vector diffComp = hitData.material->diffuse * std::max(dot((light->position - hitData.position).normalize(), hitData.normal), 0.0f) * hitData.material->opacity;
-			color += diffComp;
+			Vector lightDir = (light->position - hitData.position).normalize();
+			Vector reflectedDir = lightDir.reflect(hitData.normal).normalize();
+
+			Vector diffComp = hitData.material->diffuse * std::max(dot(lightDir, hitData.normal), 0.0f) * hitData.material->opacity;
+			Vector specComp = hitData.material->specular * pow(std::max(dot(reflectedDir, -ray.direction()), 0.0f), 128.0f);
+			color += diffComp + specComp*0.2;
 		}
 		
 		//scene->ShadowRay(hitData.position);
