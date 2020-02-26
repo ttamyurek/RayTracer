@@ -11,7 +11,7 @@ public:
 	Vector orientation;
 	Vector scale;
 
-	std::vector<Primitive> primitives;
+	std::vector<Primitive*> primitives;
 	Material *material;
 
 	Object()

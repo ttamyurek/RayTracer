@@ -13,6 +13,7 @@ bool Renderer::Render(Scene *scene)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
+			
 			Ray ray = scene->camera->shootRay(j, i); // (Row, Col)
 			Vector pixelColor = RenderPixel(ray);
 			frameBuffer.setPixel(i, j, pixelColor);
@@ -34,4 +35,6 @@ Vector Renderer::RenderPixel(Ray &ray)
 	{
 		return Vector(1.0);
 	}
+	else
+		return Vector(0.0);
 }
