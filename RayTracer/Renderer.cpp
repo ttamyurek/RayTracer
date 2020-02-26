@@ -32,7 +32,13 @@ Vector Renderer::RenderPixel(int row, int col)
 	//TODO: shadowray (shade)
 	if (hitData.hit)
 	{
-		Vector color = hitData.material->diffuse;
+		Vector color(0.0f);
+		for (auto light : scene->lights)
+		{
+			Vector diffComp = hitData.material->diffuse * std::max(dot((light->position - hitData.position).normalize(), hitData.normal), 0.0f) * hitData.material->opacity;
+			color += diffComp;
+		}
+		
 		//scene->ShadowRay(hitData.position);
 		return color;
 	}

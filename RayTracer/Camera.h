@@ -45,8 +45,8 @@ public:
 
 	Ray shootRay(int row, int col)
 	{
-		float sx = (row + 0.5) / imageWidth;
-		float sy = (col + 0.5) / imageHeight;
+		float sx = (col + 0.5) / imageWidth;
+		float sy = (row + 0.5) / imageHeight;
 
 		Vector point = center + horizontal * (2.0f * sx - 1.0f) + vertical * (2.0f * sy - 1.0f);  // P = M + (2 * sx - 1) * X + (2 * sy - 1) * Y
 		Vector rayDirection = (point - position).normalize(); // P - E
