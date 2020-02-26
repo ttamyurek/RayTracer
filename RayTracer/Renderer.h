@@ -7,5 +7,5 @@ public:
 
 	bool Render(Scene *scene);
 
-	Vector RenderPixel(Ray &ray);
+	Vector RenderPixel(int row, int col);
 };

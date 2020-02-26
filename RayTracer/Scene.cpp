@@ -28,5 +28,5 @@ Vector Scene::ShadowRay(const Ray &shadowRay, float maxDistance) {
 			shadowFactor *= ((diffuse / diffuse.Max()) * (1.0 - hitData.material->opacity));
 		}
 	}
-	
+	return shadowFactor;
 }

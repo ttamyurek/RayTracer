@@ -13,9 +13,7 @@ bool Renderer::Render(Scene *scene)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
-			
-			Ray ray = scene->camera->shootRay(j, i); // (Row, Col)
-			Vector pixelColor = RenderPixel(ray);
+			Vector pixelColor = RenderPixel(i, j);
 			frameBuffer.setPixel(i, j, pixelColor);
 			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
@@ -27,14 +25,16 @@ bool Renderer::Render(Scene *scene)
 	return true;
 }
 
-Vector Renderer::RenderPixel(Ray &ray)
+Vector Renderer::RenderPixel(int row, int col)
 {
+	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
 	HitData hitData = scene->Intersect(ray);
 	//TODO: shadowray (shade)
 	if (hitData.hit)
 	{
-		scene->ShadowRay(hitData.position);
-		return Vector(1.0);
+		Vector color = hitData.material->diffuse;
+		//scene->ShadowRay(hitData.position);
+		return color;
 	}
 	else
 		return Vector(0.0);
