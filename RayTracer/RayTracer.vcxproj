@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="Camera.h" />
     <ClInclude Include="HitData.h" />
+    <ClInclude Include="Image.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="Object.h" />
@@ -128,8 +129,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HitData.cpp" />
+    <ClCompile Include="Image.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Primitive.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
