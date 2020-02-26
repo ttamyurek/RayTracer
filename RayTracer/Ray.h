@@ -13,7 +13,7 @@ public:
 	Ray(Vector origin, Vector direction)
 	{
 		this->orig = origin;
-		this->direc = direction;
+		this->direc = direction.normalize();
 	}
 
 	Vector origin() const {

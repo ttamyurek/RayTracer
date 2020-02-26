@@ -73,5 +73,5 @@ public:
 };
 
 
-constexpr float maxDistance = std::numeric_limits<float>::max();
+constexpr float infinity = std::numeric_limits<float>::max();
 

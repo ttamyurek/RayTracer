@@ -11,9 +11,9 @@ class Scene {
 public:
 	std::vector<Object*> objects;
 	std::vector<Primitive*> primitives;
-	std::vector<Light> lights;
+	std::vector<Light*> lights;
 	Camera *camera;
 
 	HitData Intersect(const Ray &ray);
-
+	Vector ShadowRay(const Ray &shadowRay, float maxDistance);
 };

@@ -33,6 +33,7 @@ Vector Renderer::RenderPixel(Ray &ray)
 	//TODO: shadowray (shade)
 	if (hitData.hit)
 	{
+		scene->ShadowRay(hitData.position);
 		return Vector(1.0);
 	}
 	else

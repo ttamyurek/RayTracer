@@ -37,6 +37,7 @@ public:
 	// Multiplication
 	Vector operator*(float scalar) const;
 	Vector operator*(const Vector& vector) const;
+	Vector& operator*=(const Vector& vector);
 
 	// Division
 	Vector operator/(float scalar) const;
@@ -122,7 +123,7 @@ public:
 	}
 
 	float length() const {
-		return sqrt(x*x + y * y + z * z);
+		return sqrt(x * x + y * y + z * z);
 	}
 
 	Vector normalize() const {
@@ -130,6 +131,10 @@ public:
 	}
 };
 
+static float length(const Vector &vector)
+{
+	return vector.length();
+}
 
 static Vector cross(const Vector &vector1, const Vector &vector2)
 {
