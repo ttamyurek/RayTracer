@@ -22,6 +22,9 @@ public:
 
 	float aspectRatio;
 
+	Camera()
+	{}
+
 	Camera(const Vector position, const Vector viewDir, const Vector upDir, const float focalDistance, const float verticalFOV, const int imageWidth, const int imageHeight)
 	{
 		this->position = position; // E

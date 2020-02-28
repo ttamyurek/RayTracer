@@ -16,4 +16,14 @@ public:
 
 	HitData Intersect(const Ray &ray);
 	Vector ShadowRay(const Ray &shadowRay, float maxDistance);
+	void add(Camera *camera);
+	void add(Light *light);
+	void add(Primitive *primitive);
+	void add(Object *object);
+
+	void loadScene(const char *path);
+private:
+	void loadCamera(std::ifstream &inputFile);
+	void loadPointLight(std::ifstream & inputFile);
+	void loadDirectionalLight(std::ifstream & inputFile);
 };
