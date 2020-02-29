@@ -59,6 +59,7 @@ public:
 		this->v2 = v2;
 		n0 = n1 = n2 = Vector(0.0);
 		uv0.u = uv0.v = uv1.u = uv1.v = uv2.u = uv2.v = 0;
+		calculateNormal();
 	}
 
 	Triangle(Vector v0, Vector v1, Vector v2, Vector n0, Vector n1, Vector n2) {
@@ -72,6 +73,11 @@ public:
 	}
 
 	bool Intersect(const Ray &ray, HitData &hitData);
+
+	void calculateNormal()
+	{
+		n0 = n1 = n2 = -cross(v1 - v0, v2 - v0).normalize();
+	}
 };
 
 

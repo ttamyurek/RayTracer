@@ -257,6 +257,7 @@ void Scene::loadTriangle(std::ifstream &inputFile, Object *object)
 			std::getline(inputFile, line);
 			is = std::stringstream(line);
 			is >> attribute >> triangle->v2.x >> triangle->v2.y >> triangle->v2.z;
+			triangle->calculateNormal();
 		}
 		else if (attribute.compare("}") == 0) {
 			primitives.push_back(triangle);
