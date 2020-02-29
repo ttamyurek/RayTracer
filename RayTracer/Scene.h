@@ -12,6 +12,7 @@ public:
 	std::vector<Object*> objects;
 	std::vector<Primitive*> primitives;
 	std::vector<Light*> lights;
+	std::vector<Material*> materials;
 	Camera *camera;
 
 	HitData Intersect(const Ray &ray);
@@ -26,4 +27,7 @@ private:
 	void loadCamera(std::ifstream &inputFile);
 	void loadPointLight(std::ifstream & inputFile);
 	void loadDirectionalLight(std::ifstream & inputFile);
+	void loadSphere(std::ifstream & inputFile);
+	void loadMaterial(std::ifstream & inputFile);
+	void loadMaterial(std::ifstream & inputFile, Object *object);
 };

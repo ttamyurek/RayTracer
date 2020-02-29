@@ -73,6 +73,10 @@ void Scene::loadScene(const char *path)
 			loadPointLight(inputFile);
 		else if (type.compare("directional_light") == 0)
 			loadDirectionalLight(inputFile);
+		else if (type.compare("sphere") == 0)
+			loadSphere(inputFile);
+		else if (type.compare("poly_set") == 0)
+			loadObject(inputFile);
 	}
 }
 
@@ -144,5 +148,106 @@ void Scene::loadDirectionalLight(std::ifstream &inputFile)
 		}
 		else
 			std::cout << "Unknown directional light attribute '" << attribute << "'." << std::endl;
+	}
+}
+
+void Scene::loadSphere(std::ifstream &inputFile)
+{
+	Sphere *sphere = new Sphere();
+	Object *object = new Object(sphere);
+	std::string line, attribute;
+	while (std::getline(inputFile, line))
+	{
+		std::istringstream is(line);
+		is >> attribute;
+		if (attribute.compare("name") == 0)
+			continue;
+		else if (attribute.compare("numMaterials") == 0)
+			continue;
+		else if (attribute.compare("material") == 0)
+			loadMaterial(inputFile, object);
+		else if (attribute.compare("origin") == 0)
+			is >> sphere->center.x >> sphere->center.y >> sphere->center.z;
+		else if (attribute.compare("radius") == 0)
+			is >> sphere->radius;
+		else if (attribute.compare("xaxis") == 0)
+			is >> sphere->xaxis.x >> sphere->xaxis.y >> sphere->xaxis.z;
+		else if (attribute.compare("xlength") == 0)
+			is >> sphere->xlength;
+		else if (attribute.compare("yaxis") == 0)
+			is >> sphere->yaxis.x >> sphere->yaxis.y >> sphere->yaxis.z;
+		else if (attribute.compare("ylength") == 0)
+			is >> sphere->ylength;
+		else if (attribute.compare("zaxis") == 0)
+			is >> sphere->zaxis.x >> sphere->zaxis.y >> sphere->zaxis.z;
+		else if (attribute.compare("zlength") == 0)
+			is >> sphere->zlength;
+		else if (attribute.compare("}") == 0) {
+			primitives.push_back(sphere);
+			return;
+		}
+		else
+			std::cout << "Unknown sphere attribute '" << attribute << "'." << std::endl;
+	}
+}
+
+void Scene::loadMaterial(std::ifstream &inputFile)
+{
+	Material *material = new Material();
+	std::string line, attribute;
+	while (std::getline(inputFile, line))
+	{
+		std::istringstream is(line);
+		is >> attribute;
+		if (attribute.compare("diffColor") == 0)
+			is >> material->diffuse.x >> material->diffuse.y >> material->diffuse.z;
+		else if (attribute.compare("ambColor") == 0)
+			is >> material->ambient.x >> material->ambient.y >> material->ambient.z;
+		else if (attribute.compare("specColor") == 0)
+			is >> material->specular.x >> material->specular.y >> material->specular.z;
+		else if (attribute.compare("emisColor") == 0)
+			is >> material->emissive.x >> material->emissive.y >> material->emissive.z;
+		else if (attribute.compare("shininess") == 0)
+			is >> material->glossiness;
+		else if (attribute.compare("ktran") == 0) {
+			float ktran; is >> ktran; material->opacity = 1.0f - ktran;
+		}
+		else if (attribute.compare("}") == 0) {
+			materials.push_back(material);
+			return;
+		}
+		else
+			std::cout << "Unknown material attribute '" << attribute << "'." << std::endl;
+	}
+}
+
+
+void Scene::loadMaterial(std::ifstream &inputFile, Object *object)
+{
+	Material *material = new Material();
+	std::string line, attribute;
+	while (std::getline(inputFile, line))
+	{
+		std::istringstream is(line);
+		is >> attribute;
+		if (attribute.compare("diffColor") == 0)
+			is >> material->diffuse.x >> material->diffuse.y >> material->diffuse.z;
+		else if (attribute.compare("ambColor") == 0)
+			is >> material->ambient.x >> material->ambient.y >> material->ambient.z;
+		else if (attribute.compare("specColor") == 0)
+			is >> material->specular.x >> material->specular.y >> material->specular.z;
+		else if (attribute.compare("emisColor") == 0)
+			is >> material->emissive.x >> material->emissive.y >> material->emissive.z;
+		else if (attribute.compare("shininess") == 0)
+			is >> material->glossiness;
+		else if (attribute.compare("ktran") == 0) {
+			float ktran; is >> ktran; material->opacity = 1.0f - ktran;
+		}
+		else if (attribute.compare("}") == 0) {
+			object->material = material;
+			return;
+		}
+		else
+			std::cout << "Unknown material attribute '" << attribute << "'." << std::endl;
 	}
 }

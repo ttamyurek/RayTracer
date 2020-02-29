@@ -25,6 +25,7 @@ public:
 	float ylength;
 	Vector zaxis;
 	float zlength;
+	Sphere(){}
 
 	Sphere(Vector center, float radius) {
 		this->center = center;
