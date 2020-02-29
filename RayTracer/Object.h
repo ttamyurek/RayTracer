@@ -26,9 +26,11 @@ public:
 		orientation = Vector(0.0, 0.0, 1.0);
 		scale = Vector(1.0);
 		primitives.push_back(primitive);
+		primitive->parent = this;
 	}
 	void add(Primitive *primitive)
 	{
 		primitives.push_back(primitive);
+		primitive->parent = this;
 	}
 };

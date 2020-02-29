@@ -77,7 +77,15 @@ void Scene::loadScene(const char *path)
 			loadSphere(inputFile);
 		else if (type.compare("poly_set") == 0)
 			loadObject(inputFile);
+		else if ("}") {
+			std::cout << "Scene loaded successfully." << std::endl;
+			return;
+		}
+		else
+			std::cout << "Unknown type '" << type << "'." << std::endl;
 	}
+	std::cout << "Scene load unsuccessful." << std::endl;
+	return;
 }
 
 void Scene::loadCamera(std::ifstream &inputFile)
@@ -184,6 +192,7 @@ void Scene::loadSphere(std::ifstream &inputFile)
 			is >> sphere->zlength;
 		else if (attribute.compare("}") == 0) {
 			primitives.push_back(sphere);
+			objects.push_back(object);
 			return;
 		}
 		else
@@ -230,19 +239,28 @@ void Scene::loadObject(std::ifstream &inputFile)
 
 void Scene::loadTriangle(std::ifstream &inputFile, Object *object)
 {
-	Triangle *sphere = new Triangle();
+	Triangle *triangle = new Triangle();
 	std::string line, attribute;
+	int numVertices;
 	while (std::getline(inputFile, line))
 	{
-		std::istringstream is(line);
+		std::stringstream is(line);
 		is >> attribute;
 		if (attribute.compare("numVertices") == 0)
-			continue;
+			is >> numVertices;
 		else if (attribute.compare("pos") == 0)
-			continue;
-		
+		{
+			is >> triangle->v0.x >> triangle->v0.y >> triangle->v0.z;
+			std::getline(inputFile, line);
+			is = std::stringstream(line);
+			is >> attribute >> triangle->v1.x >> triangle->v1.y >> triangle->v1.z;
+			std::getline(inputFile, line);
+			is = std::stringstream(line);
+			is >> attribute >> triangle->v2.x >> triangle->v2.y >> triangle->v2.z;
+		}
 		else if (attribute.compare("}") == 0) {
-			primitives.push_back(sphere);
+			primitives.push_back(triangle);
+			object->add(triangle);
 			return;
 		}
 		else
@@ -304,6 +322,7 @@ void Scene::loadMaterial(std::ifstream &inputFile, Object *object)
 		}
 		else if (attribute.compare("}") == 0) {
 			object->material = material;
+			materials.push_back(material);
 			return;
 		}
 		else
