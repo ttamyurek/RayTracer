@@ -51,6 +51,7 @@ public:
 
 	// TODO: Material per Vertex?
 	//Material *m0, *m1, *m2;
+	Triangle(){}
 
 	Triangle(Vector v0, Vector v1, Vector v2) {
 		this->v0 = v0;

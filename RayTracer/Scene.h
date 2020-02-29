@@ -28,6 +28,8 @@ private:
 	void loadPointLight(std::ifstream & inputFile);
 	void loadDirectionalLight(std::ifstream & inputFile);
 	void loadSphere(std::ifstream & inputFile);
+	void loadTriangle(std::ifstream & inputFile, Object *object);
+	void loadObject(std::ifstream & inputFile);
 	void loadMaterial(std::ifstream & inputFile);
 	void loadMaterial(std::ifstream & inputFile, Object *object);
 };

@@ -6,12 +6,12 @@
 
 class Object
 {
+	std::vector<Primitive*> primitives;
 public:
 	Vector position;
 	Vector orientation;
 	Vector scale;
 
-	std::vector<Primitive*> primitives;
 	Material *material;
 
 	Object()
@@ -25,6 +25,10 @@ public:
 		position = Vector(0.0);
 		orientation = Vector(0.0, 0.0, 1.0);
 		scale = Vector(1.0);
+		primitives.push_back(primitive);
+	}
+	void add(Primitive *primitive)
+	{
 		primitives.push_back(primitive);
 	}
 };

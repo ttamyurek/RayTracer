@@ -191,6 +191,65 @@ void Scene::loadSphere(std::ifstream &inputFile)
 	}
 }
 
+void Scene::loadObject(std::ifstream &inputFile)
+{
+	Object *object = new Object();
+	std::string line, attribute;
+	while (std::getline(inputFile, line))
+	{
+		std::istringstream is(line);
+		is >> attribute;
+		if (attribute.compare("poly") == 0)
+			loadTriangle(inputFile, object);
+		else if (attribute.compare("name") == 0)
+			continue;
+		else if (attribute.compare("numMaterials") == 0)
+			continue;
+		else if (attribute.compare("material") == 0)
+			loadMaterial(inputFile, object);
+		else if (attribute.compare("type") == 0)
+			continue;
+		else if (attribute.compare("normType") == 0)
+			continue;
+		else if (attribute.compare("materialBinding") == 0)
+			continue;
+		else if (attribute.compare("hasTextureCoords") == 0)
+			continue;
+		else if (attribute.compare("rowSize") == 0)
+			continue;
+		else if (attribute.compare("numPolys") == 0)
+			continue;
+		else if (attribute.compare("}") == 0) {
+			objects.push_back(object);
+			return;
+		}
+		else
+			std::cout << "Unknown object attribute '" << attribute << "'." << std::endl;
+	}
+}
+
+void Scene::loadTriangle(std::ifstream &inputFile, Object *object)
+{
+	Triangle *sphere = new Triangle();
+	std::string line, attribute;
+	while (std::getline(inputFile, line))
+	{
+		std::istringstream is(line);
+		is >> attribute;
+		if (attribute.compare("numVertices") == 0)
+			continue;
+		else if (attribute.compare("pos") == 0)
+			continue;
+		
+		else if (attribute.compare("}") == 0) {
+			primitives.push_back(sphere);
+			return;
+		}
+		else
+			std::cout << "Unknown triangle attribute '" << attribute << "'." << std::endl;
+	}
+}
+
 void Scene::loadMaterial(std::ifstream &inputFile)
 {
 	Material *material = new Material();
