@@ -21,7 +21,7 @@ Vector Image::getPixel(int row, int col)
 void Image::setPixel(int row, int col, Vector color)
 {
 	//TODO: Exposure control
-	color = color / color.Max();
+	//color = color / color.Max();
 	data[3 * (imageWidth * (imageHeight - row - 1) + col) + 0] = (uint8) (color.x * 255.0);
 	data[3 * (imageWidth * (imageHeight - row - 1) + col) + 1] = (uint8) (color.y * 255.0);
 	data[3 * (imageWidth * (imageHeight - row - 1) + col) + 2] = (uint8) (color.z * 255.0);

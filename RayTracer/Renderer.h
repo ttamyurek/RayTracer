@@ -5,7 +5,7 @@ class Renderer {
 public:
 	Scene *scene;
 
-	bool Render(Scene *scene);
+	bool Render(Scene *scene, const char *outputFile);
 
 	Vector RenderPixel(int row, int col);
 };

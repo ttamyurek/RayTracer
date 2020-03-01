@@ -14,6 +14,7 @@ int main()
 {
 	Scene scene(IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.loadScene("Scenes/test.ascii");
+	scene.loadOBJ("Objects/horse.obj");
 	/*Camera camera(Vector(0.0f), Vector(1.0f, 0.0f, 0.0f), Vector(0.0f, 0.0f, 1.0f), 10, 45.0 * 3.1415 / 180.0, 512, 512);
 	PointLight plight(Vector(10.0f, 0.0f, 2.5f));
 	scene.add(&plight);
@@ -31,7 +32,7 @@ int main()
 	
 	Renderer renderer;
 
-	renderer.Render(&scene);
+	renderer.Render(&scene, "Render Outputs/render.bmp");
 
 	return 0;
 }

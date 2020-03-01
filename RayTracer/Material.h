@@ -18,7 +18,7 @@ public:
 		diffuse = Vector(0.5f);
 		specular = Vector(1.0f);
 		emissive = Vector(0.0f);
-		glossiness = 0.0f;
+		glossiness = 0.1f;
 		opacity = 1.0f;
 	}
 

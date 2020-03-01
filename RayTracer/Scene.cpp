@@ -329,3 +329,102 @@ void Scene::loadMaterial(std::ifstream &inputFile, Object *object)
 			std::cout << "Unknown material attribute '" << attribute << "'." << std::endl;
 	}
 }
+
+bool Scene::loadOBJ(const char * path)
+{
+	Object *object = new Object();
+	Material *material = new Material();
+	object->material = material;
+	std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
+	std::vector< Vector > temp_vertices;
+	std::vector< UV > temp_uvs;
+	std::vector< Vector > temp_normals;
+
+	std::ifstream inputFile(path);
+	std::cout << "Parsing Vertex Data from " << path << std::endl;
+	std::string line, lineHeader;
+	while (getline(inputFile, line))
+	{
+		std::istringstream is(line);
+		is >> lineHeader;
+		if (line[0] == '#') continue; //Skip Comments
+		if (lineHeader == "v") // Parse Vertices
+		{
+			Vector vertex;
+			is >> vertex.x >> vertex.y >> vertex.z;
+			temp_vertices.push_back(vertex);
+		}
+		else if (lineHeader == "vt") // Parse Texture Coordinates
+		{
+			UV uv;
+			is >> uv.u >> uv.v;
+			temp_uvs.push_back(uv);
+		}
+		else if (lineHeader == "vn") // Parse Vertex Normals
+		{
+			Vector normal;
+			is >> normal.x >> normal.y >> normal.z;
+			temp_normals.push_back(normal);
+		}
+		else if (lineHeader == "f") // Parse Face Data
+		{
+			unsigned int vertexIndex[3], uvIndex[3], normalIndex[3];
+			std::string index;
+			for (int i = 0; i < 3; i++)
+			{
+				getline(is, index, '/');
+				vertexIndex[i] = stoi(index);
+				getline(is, index, '/');
+				uvIndex[i] = stoi(index);
+				getline(is, index, ' ');
+				normalIndex[i] = stoi(index);
+			}
+			Triangle *triangle = new Triangle();
+			triangle->v0 = temp_vertices[vertexIndex[0] - 1];
+			triangle->v1 = temp_vertices[vertexIndex[1] - 1];
+			triangle->v2 = temp_vertices[vertexIndex[2] - 1];
+			triangle->uv0 = temp_uvs[uvIndex[0] - 1];
+			triangle->uv1 = temp_uvs[uvIndex[1] - 1];
+			triangle->uv2 = temp_uvs[uvIndex[2] - 1];
+			triangle->n0 = temp_normals[normalIndex[0] - 1];
+			triangle->n1 = temp_normals[normalIndex[1] - 1];
+			triangle->n2 = temp_normals[normalIndex[2] - 1];
+
+			triangle->parent = object;
+			object->add(triangle);
+			primitives.push_back(triangle);
+			objects.push_back(object);
+			
+			/*vertexIndices.push_back(vertexIndex[0]);
+			vertexIndices.push_back(vertexIndex[1]);
+			vertexIndices.push_back(vertexIndex[2]);
+			uvIndices.push_back(uvIndex[0]);
+			uvIndices.push_back(uvIndex[1]);
+			uvIndices.push_back(uvIndex[2]);
+			normalIndices.push_back(normalIndex[0]);
+			normalIndices.push_back(normalIndex[1]);
+			normalIndices.push_back(normalIndex[2]);*/
+
+		}
+		else continue;
+	}
+	return true;
+	/*
+	for (unsigned int i = 0; i < vertexIndices.size(); i++) {
+		unsigned int vertexIndex = vertexIndices[i];
+		Vector vertex = temp_vertices[vertexIndex - 1];
+		out_vertices.push_back(vertex);
+	}
+	for (unsigned int i = 0; i < uvIndices.size(); i++) {
+		unsigned int uvIndex = uvIndices[i];
+		UV uv = temp_uvs[uvIndex - 1];
+		out_uvs.push_back(uv);
+	}
+	for (unsigned int i = 0; i < normalIndices.size(); i++) {
+		unsigned int normalIndex = normalIndices[i];
+		Vector normal = temp_normals[normalIndex - 1];
+		out_normals.push_back(normal);
+	}
+	return 1;
+	*/
+}

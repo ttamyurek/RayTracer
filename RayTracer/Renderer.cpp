@@ -2,7 +2,7 @@
 #include "Image.h"
 #include <iostream>
 
-bool Renderer::Render(Scene *scene)
+bool Renderer::Render(Scene *scene, const char *outputFile)
 {
 	this->scene = scene;
 	int imageWidth = scene->camera->imageWidth;
@@ -20,7 +20,7 @@ bool Renderer::Render(Scene *scene)
 	}
 
 	//TODO: Save Image
-	frameBuffer.save((const char*)"render.bmp");
+	frameBuffer.save(outputFile);
 	//TODO: Delete Image
 	return true;
 }
@@ -36,7 +36,7 @@ Vector Renderer::RenderPixel(int row, int col)
 		Vector color(0.0f);
 		for (auto light : scene->lights)
 		{
-			Vector lightDir = (light->position - hitData.position).normalize();
+			Vector lightDir = light->getDirection(hitData.position);
 			Vector reflectedDir = lightDir.reflect(hitData.normal).normalize();
 
 			Vector diffComp = material->diffuse * std::max(dot(lightDir, hitData.normal), 0.0f) * material->opacity;
