@@ -12,10 +12,8 @@ using namespace std;
 
 int main()
 {
-	Scene scene;
-	scene.loadScene("Scenes/test1.ascii");
-	scene.camera->imageHeight = IMAGE_HEIGHT;
-	scene.camera->imageWidth = IMAGE_WIDTH;
+	Scene scene(IMAGE_WIDTH, IMAGE_HEIGHT);
+	scene.loadScene("Scenes/test.ascii");
 	/*Camera camera(Vector(0.0f), Vector(1.0f, 0.0f, 0.0f), Vector(0.0f, 0.0f, 1.0f), 10, 45.0 * 3.1415 / 180.0, 512, 512);
 	PointLight plight(Vector(10.0f, 0.0f, 2.5f));
 	scene.add(&plight);

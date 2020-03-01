@@ -77,36 +77,35 @@ void Scene::loadScene(const char *path)
 			loadSphere(inputFile);
 		else if (type.compare("poly_set") == 0)
 			loadObject(inputFile);
-		else if ("}") {
-			std::cout << "Scene loaded successfully." << std::endl;
-			return;
-		}
 		else
 			std::cout << "Unknown type '" << type << "'." << std::endl;
 	}
-	std::cout << "Scene load unsuccessful." << std::endl;
+	std::cout << "Scene loaded successful." << std::endl;
 	return;
 }
 
 void Scene::loadCamera(std::ifstream &inputFile)
 {
-	Camera *camera = new Camera();
+	Vector position, viewDir, upDir;
+	float focalDistance, verticalFOV;
+
 	std::string line, attribute;
 	while (std::getline(inputFile, line))
 	{
 		std::istringstream is(line);
 		is >> attribute;
 		if (attribute.compare("position") == 0)
-			is >> camera->position.x >> camera->position.y >> camera->position.z;
+			is >> position.x >> position.y >> position.z;
 		else if (attribute.compare("viewDirection") == 0)
-			is >> camera->viewDir.x >> camera->viewDir.y >> camera->viewDir.z;
+			is >> viewDir.x >> viewDir.y >> viewDir.z;
 		else if (attribute.compare("orthoUp") == 0)
-			is >> camera->upDir.x >> camera->upDir.y >> camera->upDir.z;
+			is >> upDir.x >> upDir.y >> upDir.z;
 		else if (attribute.compare("focalDistance") == 0)
-			is >> camera->focalDistance;
+			is >> focalDistance;
 		else if (attribute.compare("verticalFOV") == 0)
-			is >> camera->verticalFOV;
+			is >> verticalFOV;
 		else if (attribute.compare("}") == 0) {
+			Camera *camera = new Camera(position, viewDir, upDir, focalDistance, verticalFOV, imageWidth, imageHeight);
 			this->camera = camera;
 			return;
 		}

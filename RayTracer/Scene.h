@@ -23,6 +23,15 @@ public:
 	void add(Object *object);
 
 	void loadScene(const char *path);
+
+	Scene(int imageWidth, int imageHeight)
+	{
+		this->imageWidth = imageWidth;
+		this->imageHeight = imageHeight;
+	}
+
+	int imageWidth, imageHeight;
+
 private:
 	void loadCamera(std::ifstream &inputFile);
 	void loadPointLight(std::ifstream & inputFile);
