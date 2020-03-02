@@ -27,9 +27,13 @@ Vector Scene::ShadowRay(const Ray &shadowRay, float maxDistance) {
 	{
 		if (primitive->Intersect(shadowRay, hitData))
 		{
-			if (hitData.t > maxDistance || hitData.material->opacity > 0.98) return Vector(0.0f);
-			Vector diffuse = hitData.material->diffuse;
-			shadowFactor *= ((diffuse / diffuse.Max()) * (1.0 - hitData.material->opacity));
+			if (hitData.t < maxDistance)
+			{
+				if (hitData.material->opacity > 0.98) return Vector(0.0f);
+				Vector diffuse = hitData.material->diffuse;
+				shadowFactor *= ((diffuse / diffuse.Max()) * (1.0 - hitData.material->opacity));
+			}
+			
 		}
 	}
 	return shadowFactor;
@@ -316,7 +320,7 @@ void Scene::loadMaterial(std::ifstream &inputFile, Object *object)
 		else if (attribute.compare("shininess") == 0)
 			is >> material->glossiness;
 		else if (attribute.compare("ktran") == 0) {
-			float ktran; is >> ktran; material->opacity = 1.0f - ktran;
+			float ktran; is >> ktran; material->opacity = 1.0f - ktran; // TODO: Fix
 		}
 		else if (attribute.compare("}") == 0) {
 			object->material = material;

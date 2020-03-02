@@ -6,13 +6,13 @@ public:
 	Vector color;
 
 	virtual Vector getDirection(const Vector &position) const = 0;
+	virtual float getAttenuation(const Vector &position) const = 0;
 	virtual float distance(const Vector &position) const = 0;
 };
 
 class PointLight : public Light {
 public:
 	Vector position;
-	float attenutationDistance = 200.0f;
 
 	PointLight()
 	{}
@@ -30,6 +30,11 @@ public:
 	float distance(const Vector &position) const
 	{
 		return length(this->position - position);
+	}
+	float getAttenuation(const Vector &position) const
+	{
+		float dist = distance(position);
+		return std::min(1.0, 1 / (0.25 + 0.1 * dist + 0.01 * dist * dist));
 	}
 };
 
@@ -58,6 +63,11 @@ public:
 	float distance(const Vector &position) const
 	{
 		return maxDistance;
+	}
+
+	float getAttenuation(const Vector &position) const
+	{
+		return 1.0f;
 	}
 };
 

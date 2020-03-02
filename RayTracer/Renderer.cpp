@@ -35,7 +35,7 @@ Vector Renderer::RenderPixel(int row, int col)
 	{
 		Vector color(0.0f);
 		Vector directIllumination(0.0f);
-		for (auto light : scene->lights)
+		for (auto &light : scene->lights)
 		{
 			Vector lightDir = light->getDirection(hitData.position);
 			Vector reflectedDir = lightDir.reflect(hitData.normal).normalize();
@@ -45,9 +45,10 @@ Vector Renderer::RenderPixel(int row, int col)
 			
 			Ray shadowRay(hitData.position, lightDir);
 			shadowFactor = scene->ShadowRay(shadowRay, light->distance(hitData.position));
-			directIllumination += diffComp * shadowFactor + specComp;
+			directIllumination += shadowFactor * light->color * light->getAttenuation(hitData.position) * ( diffComp + specComp );
 		}
-		color = directIllumination;
+		Vector ambComp = material->ambient * material->diffuse * material->opacity;
+		color = ambComp + directIllumination;
 		return color;
 	}
 	else
