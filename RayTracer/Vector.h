@@ -2,6 +2,8 @@
 #include <cmath>
 #include <algorithm>
 
+constexpr float pi = 3.14159265358979f;
+
 //This is a class of 3D Vector
 class Vector {
 public:
@@ -129,6 +131,9 @@ public:
 	Vector normalize() const {
 		return *this / length();
 	}
+
+
+	void rotate(float angle, Vector u);
 };
 
 static float length(const Vector &vector)
@@ -149,4 +154,9 @@ static float dot(const Vector &vector1, const Vector &vector2)
 static Vector normalize(const Vector &vector)
 {
     return vector.normalize();
+}
+
+static float radian(float angle)
+{
+	return angle * pi / 180.0;
 }

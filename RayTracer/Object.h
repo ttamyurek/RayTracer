@@ -33,4 +33,9 @@ public:
 		primitives.push_back(primitive);
 		primitive->parent = this;
 	}
+	void rotate(float angle, Vector axis)
+	{
+		for (auto &primitive : primitives)
+			primitive->rotate(angle, axis);
+	}
 };

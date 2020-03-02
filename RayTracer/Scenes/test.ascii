@@ -1,9 +1,9 @@
 Composer format 2.1 ascii
 camera {
-  position 0 5 -20
-  viewDirection 0 0 1
+  position -20 0 0
+  viewDirection 1 0 0
   focalDistance 10
-  orthoUp 0 1 0
+  orthoUp 0 0 1
   verticalFOV 0.785398
 }
 point_light {

@@ -12,6 +12,7 @@ class Primitive
 public:
 	Object* parent;
 	virtual bool Intersect(const Ray &ray, HitData &hitData) = 0;
+	virtual void rotate(float angle, Vector axis) = 0;
 };
 
 class Sphere : public Primitive
@@ -33,6 +34,14 @@ public:
 	}
 
 	bool Intersect(const Ray &ray, HitData &hitData);
+
+	void rotate(float angle, Vector axis)
+	{
+		xaxis.rotate(angle, axis);
+		yaxis.rotate(angle, axis);
+		zaxis.rotate(angle, axis);
+
+	}
 };
 
 struct UV
@@ -77,6 +86,17 @@ public:
 	void calculateNormal()
 	{
 		n0 = n1 = n2 = cross(v1 - v0, v2 - v0).normalize();
+	}
+
+	void rotate(float angle, Vector axis)
+	{
+		v0.rotate(angle, axis);
+		v1.rotate(angle, axis);
+		v2.rotate(angle, axis);
+
+		n0.rotate(angle, axis);
+		n1.rotate(angle, axis);
+		n2.rotate(angle, axis);
 	}
 };
 

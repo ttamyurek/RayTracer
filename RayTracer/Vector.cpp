@@ -1,4 +1,3 @@
-#define _USE_MATH_DEFINES
 #include "Vector.h"
 
 Vector::Vector() {
@@ -79,6 +78,31 @@ Vector Vector::cross(const Vector& vector) const {
 	return result;
 }
 
+void Vector::rotate(float angle, Vector u)
+{
+	// Rodrigues' rotation formula?
+	float rotationMatrix[3][3];
+	rotationMatrix[0][0] = cos(angle) + u.x * u.x * (1 - cos(angle));
+	rotationMatrix[1][0] = u.y * u.x * (1 - cos(angle)) + u.z * sin(angle);
+	rotationMatrix[2][0] = u.z * u.x * (1 - cos(angle)) - u.y * sin(angle);
+
+	rotationMatrix[0][1] = u.x * u.y * (1 - cos(angle)) - u.z * sin(angle);
+	rotationMatrix[1][1] = cos(angle) + u.y * u.y * (1 - cos(angle));
+	rotationMatrix[2][1] = u.z * u.y * (1 - cos(angle)) - u.x * sin(angle);
+
+	rotationMatrix[0][2] = u.x * u.z * (1 - cos(angle)) + u.y * sin(angle);
+	rotationMatrix[1][2] = u.y * u.z * (1 - cos(angle)) - u.x * sin(angle);
+	rotationMatrix[2][2] = cos(angle) + u.z * u.z * (1 - cos(angle));
+
+	float rx = rotationMatrix[0][0] * x + rotationMatrix[1][0] * y + rotationMatrix[2][0] * z;
+	float ry = rotationMatrix[0][1] * x + rotationMatrix[1][1] * y + rotationMatrix[2][1] * z;
+	float rz = rotationMatrix[0][2] * x + rotationMatrix[1][2] * y + rotationMatrix[2][2] * z;
+
+	x = rx;
+	y = ry;
+	z = rz;
+}
+
 Vector Vector::SampleNormalOrientedHemisphere(const Vector& normal) {
 	//random inputs
 	float random1 = rand() / (float)RAND_MAX;
@@ -86,7 +110,7 @@ Vector Vector::SampleNormalOrientedHemisphere(const Vector& normal) {
 
 	//get uniform vector in hemisphere of (0,1,0)
 	float sinTheta = sqrt(1.0f - random1 * random1);
-	float phi = 2.0f * M_PI * random12;
+	float phi = 2.0f * pi * random12;
 	Vector sample = Vector(cos(phi) * sinTheta, random1, sin(phi) * sinTheta);
 
 	//orient along normal
