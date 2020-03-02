@@ -19,9 +19,8 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 		}
 	}
 
-	//TODO: Save Image
 	frameBuffer.save(outputFile);
-	//TODO: Delete Image
+
 	return true;
 }
 
@@ -31,9 +30,11 @@ Vector Renderer::RenderPixel(int row, int col)
 	HitData hitData = scene->Intersect(ray);
 	//TODO: shadowray (shade)
 	Material *material = hitData.material;
+	Vector shadowFactor(1.0);
 	if (hitData.hit)
 	{
 		Vector color(0.0f);
+		Vector directIllumination(0.0f);
 		for (auto light : scene->lights)
 		{
 			Vector lightDir = light->getDirection(hitData.position);
@@ -41,10 +42,12 @@ Vector Renderer::RenderPixel(int row, int col)
 
 			Vector diffComp = material->diffuse * std::max(dot(lightDir, hitData.normal), 0.0f) * material->opacity;
 			Vector specComp = material->specular * pow(std::max(dot(reflectedDir, -ray.direction()), 0.0f), material->glossiness * 128.0f);
-			color += diffComp + specComp;
+			
+			Ray shadowRay(hitData.position, lightDir);
+			shadowFactor = scene->ShadowRay(shadowRay, light->distance(hitData.position));
+			directIllumination += diffComp * shadowFactor + specComp;
 		}
-		
-		//scene->ShadowRay(hitData.position);
+		color = directIllumination;
 		return color;
 	}
 	else

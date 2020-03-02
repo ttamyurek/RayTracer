@@ -103,6 +103,32 @@ void Vector::rotate(float angle, Vector u)
 	z = rz;
 }
 
+void Vector::rotateNormal(float angle, Vector u)
+{
+	float rotationMatrix[3][3];
+	rotationMatrix[0][0] = cos(angle) + u.x * u.x * (1 - cos(angle));
+	rotationMatrix[1][0] = u.y * u.x * (1 - cos(angle)) + u.z * sin(angle);
+	rotationMatrix[2][0] = u.z * u.x * (1 - cos(angle)) - u.y * sin(angle);
+
+	rotationMatrix[0][1] = u.x * u.y * (1 - cos(angle)) - u.z * sin(angle);
+	rotationMatrix[1][1] = cos(angle) + u.y * u.y * (1 - cos(angle));
+	rotationMatrix[2][1] = u.z * u.y * (1 - cos(angle)) - u.x * sin(angle);
+
+	rotationMatrix[0][2] = u.x * u.z * (1 - cos(angle)) + u.y * sin(angle);
+	rotationMatrix[1][2] = u.y * u.z * (1 - cos(angle)) - u.x * sin(angle);
+	rotationMatrix[2][2] = cos(angle) + u.z * u.z * (1 - cos(angle));
+
+	float rx = rotationMatrix[0][0] * x + rotationMatrix[0][1] * y + rotationMatrix[0][2] * z;
+	float ry = rotationMatrix[1][0] * x + rotationMatrix[1][1] * y + rotationMatrix[1][2] * z;
+	float rz = rotationMatrix[2][0] * x + rotationMatrix[2][1] * y + rotationMatrix[2][2] * z;
+
+	x = rx;
+	y = ry;
+	z = rz;
+
+	normalize();
+}
+
 Vector Vector::SampleNormalOrientedHemisphere(const Vector& normal) {
 	//random inputs
 	float random1 = rand() / (float)RAND_MAX;

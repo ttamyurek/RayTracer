@@ -134,6 +134,7 @@ public:
 
 
 	void rotate(float angle, Vector u);
+	void rotateNormal(float angle, Vector u);
 };
 
 static float length(const Vector &vector)

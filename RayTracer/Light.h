@@ -3,7 +3,6 @@
 
 class Light {
 public:
-	Vector position;
 	Vector color;
 
 	virtual Vector getDirection(const Vector &position) const = 0;
@@ -12,6 +11,7 @@ public:
 
 class PointLight : public Light {
 public:
+	Vector position;
 	float attenutationDistance = 200.0f;
 
 	PointLight()
@@ -36,12 +36,18 @@ public:
 class DirectionalLight : public Light {
 public:
 	Vector direction;
+	float maxDistance = 100.0f;
 	DirectionalLight()
 	{}
-	DirectionalLight(Vector position, Vector direction)
+	DirectionalLight(Vector direction)
 	{
-		this->position = position;
 		this->direction = direction.normalize();
+	}
+
+	DirectionalLight(Vector direction, float maxDistance)
+	{
+		this->direction = direction.normalize();
+		this->maxDistance = maxDistance;
 	}
 
 	Vector getDirection(const Vector &position) const
@@ -51,12 +57,13 @@ public:
 
 	float distance(const Vector &position) const
 	{
-		return length(this->position - position);
+		return maxDistance;
 	}
 };
 
 class AreaLight : public Light {
 public:
+	Vector position;
 	Vector direction;
 	float width;
 	float height;

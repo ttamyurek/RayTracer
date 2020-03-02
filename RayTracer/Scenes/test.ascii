@@ -1,13 +1,13 @@
 Composer format 2.1 ascii
 camera {
-  position -20 0 0
-  viewDirection 1 0 0
+  position 0 -20 5
+  viewDirection 0 1 0
   focalDistance 10
   orthoUp 0 0 1
   verticalFOV 0.785398
 }
 point_light {
-  position 5 5 10
+  position 0 -10 20
   color 0.2 0.2 0.2
 }
 poly_set {

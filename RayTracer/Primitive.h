@@ -56,7 +56,7 @@ public:
 	Vector v0, v1, v2;
 	Vector n0, n1, n2;
 	UV uv0, uv1, uv2;
-    bool doubleSided = false;
+    bool doubleSided = true; //TODO: Fix
 
 	// TODO: Material per Vertex?
 	//Material *m0, *m1, *m2;
@@ -94,9 +94,9 @@ public:
 		v1.rotate(angle, axis);
 		v2.rotate(angle, axis);
 
-		n0.rotate(angle, axis);
-		n1.rotate(angle, axis);
-		n2.rotate(angle, axis);
+		n0.rotateNormal(angle, axis);
+		n1.rotateNormal(angle, axis);
+		n2.rotateNormal(angle, axis);
 	}
 };
 

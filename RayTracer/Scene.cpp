@@ -143,9 +143,7 @@ void Scene::loadDirectionalLight(std::ifstream &inputFile)
 	{
 		std::istringstream is(line);
 		is >> attribute;
-		if (attribute.compare("position") == 0)
-			is >> light->position.x >> light->position.y >> light->position.z;
-		else if (attribute.compare("direction") == 0)
+		if (attribute.compare("direction") == 0)
 			is >> light->direction.x >> light->direction.y >> light->direction.z;
 		else if (attribute.compare("color") == 0)
 			is >> light->color.x >> light->color.y >> light->color.z;
