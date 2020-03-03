@@ -129,7 +129,7 @@ void Vector::rotateNormal(float angle, Vector u)
 	normalize();
 }
 
-Vector Vector::SampleNormalOrientedHemisphere(const Vector& normal) {
+Vector SampleNormalOrientedHemisphere(const Vector& normal) {
 	//random inputs
 	float random1 = rand() / (float)RAND_MAX;
 	float random12 = rand() / (float)RAND_MAX;

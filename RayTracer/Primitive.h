@@ -83,6 +83,8 @@ public:
 
 	bool Intersect(const Ray &ray, HitData &hitData);
 
+	bool Intersect(const Ray & ray);
+
 	void calculateNormal()
 	{
 		n0 = n1 = n2 = cross(v1 - v0, v2 - v0).normalize();

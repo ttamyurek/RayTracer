@@ -61,6 +61,32 @@ bool Triangle::Intersect(const Ray &ray, HitData &hitData)
     
     
 }
+bool Triangle::Intersect(const Ray &ray)
+{
+	const float EPSILON = 0.00001;
+
+	Vector v01 = v1 - v0;
+	Vector v02 = v2 - v0;
+	Vector pvec = cross(ray.direction(), v02);
+	float det = dot(v01, pvec);
+
+	if (doubleSided && abs(det) < EPSILON) return false;
+	if (!doubleSided && det < EPSILON) return false;
+
+	Vector tvec = ray.origin() - v0;
+	float u = dot(tvec, pvec) / det;
+	if (u < 0.0f || u > 1.0f) return false;
+
+	Vector qvec = cross(tvec, v01);
+	float v = dot(ray.direction(), qvec) / det;
+	if (v < 0 || u + v > 1) return false;
+
+	float t = dot(v02, qvec) / det;
+	if (t > 0.0)
+		return true;
+	else 
+		return false;
+}
 
 bool Sphere::Intersect(const Ray &ray, HitData &hitData)
 {

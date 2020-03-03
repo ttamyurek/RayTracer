@@ -1,6 +1,7 @@
 #include "Renderer.h"
 #include "Image.h"
 #include <iostream>
+#include <random>
 
 bool Renderer::Render(Scene *scene, const char *outputFile)
 {
@@ -13,7 +14,7 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
-			Vector pixelColor = RenderPixel(i, j);
+			Vector pixelColor = rayCast(i, j, 16);
 			frameBuffer.setPixel(i, j, pixelColor);
 			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
@@ -47,8 +48,45 @@ Vector Renderer::RenderPixel(int row, int col)
 			shadowFactor = scene->ShadowRay(shadowRay, light->distance(hitData.position));
 			directIllumination += shadowFactor * light->color * light->getAttenuation(hitData.position) * ( diffComp + specComp );
 		}
+		//Vector reflectedRayDir = ray.direction().reflect(hitData.position).normalize();
+		//ray = Ray(hitData.position, reflectedRayDir);
+		//hitData = scene->Intersect(ray);
+		//Vector refRadiance = hitData.hit ? hitData.material->diffuse: Vector(0.0);
+		//Vector refComp = material->specular * refRadiance;
 		Vector ambComp = material->ambient * material->diffuse * material->opacity;
 		color = ambComp + directIllumination;
+		return color;
+	}
+	else
+		return Vector(0.0);
+}
+
+std::default_random_engine generator;
+std::uniform_real_distribution<float> distribution(0, 1);
+
+Vector Renderer::rayCast(int row, int col, int SPP)
+{
+	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
+	HitData hitData = scene->Intersect(ray);
+	//TODO: shadowray (shade)
+	Material *material = hitData.material;
+	float shadow(0.0);
+	if (hitData.hit)
+	{
+		Vector color(0.0f);
+		Vector directIllumination(0.0f);
+		for (auto &light : scene->lights)
+		{
+			for (int i = 0; i < SPP; i++)
+			{
+				Vector rayDir = SampleNormalOrientedHemisphere(hitData.normal);
+				Ray shadowRay(hitData.position, rayDir);
+				if (light->intersect(shadowRay))// ShadowRay(ray, light->distance(hitData.position));
+					shadow++;
+			}
+			shadow /= SPP;
+			color += shadow;
+		}
 		return color;
 	}
 	else

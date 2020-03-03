@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
 	Scene scene(IMAGE_WIDTH, IMAGE_HEIGHT);
-	scene.loadScene("Scenes/test3.ascii");
+	scene.loadScene("Scenes/area_light.ascii");
 	//scene.loadOBJ("Objects/horse.obj");
 	//scene.objects[1]->rotate(radian(-90.0), Vector(1.0, 0.0, 0.0));
 	/*Camera camera(Vector(0.0f), Vector(1.0f, 0.0f, 0.0f), Vector(0.0f, 0.0f, 1.0f), 10, 45.0 * 3.1415 / 180.0, 512, 512);

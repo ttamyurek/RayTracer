@@ -36,6 +36,7 @@ private:
 	void loadCamera(std::ifstream &inputFile);
 	void loadPointLight(std::ifstream & inputFile);
 	void loadDirectionalLight(std::ifstream & inputFile);
+	void loadAreaLight(std::ifstream & inputFile);
 	void loadSphere(std::ifstream & inputFile);
 	void loadTriangle(std::ifstream & inputFile, Object *object);
 	void loadObject(std::ifstream & inputFile);

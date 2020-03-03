@@ -22,9 +22,9 @@ void Image::setPixel(int row, int col, Vector color)
 {
 	//TODO: Exposure control
 	//color = color / color.Max();
-	uint8 R = fminf(powf(color.x, 1 / 2.2f), 1.0) * 255.0;
-	uint8 G = fminf(powf(color.y, 1 / 2.2f), 1.0) * 255.0;
-	uint8 B = fminf(powf(color.z, 1 / 2.2f), 1.0) * 255.0;
+	uint8 R = fminf(powf(color.x, 1 / 2.f), 1.0) * 255.0;
+	uint8 G = fminf(powf(color.y, 1 / 2.f), 1.0) * 255.0;
+	uint8 B = fminf(powf(color.z, 1 / 2.f), 1.0) * 255.0;
 
 	data[3 * (imageWidth * (imageHeight - row - 1) + col) + 0] = R;
 	data[3 * (imageWidth * (imageHeight - row - 1) + col) + 1] = G;

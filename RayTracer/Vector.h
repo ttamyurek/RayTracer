@@ -22,9 +22,6 @@ public:
 	// Intialize to (v[0], v[1], v[2])
 	Vector(const float v[3]);
 
-	// Random unit vector in hemisphere of normal
-	static Vector SampleNormalOrientedHemisphere(const Vector& normal);
-
 	void CreateNormalSpace(Vector& tangent, Vector& bitangent) const;
 
 	// Addition
@@ -161,3 +158,6 @@ static float radian(float angle)
 {
 	return angle * pi / 180.0;
 }
+
+// Random unit vector in hemisphere of normal
+Vector SampleNormalOrientedHemisphere(const Vector& normal);

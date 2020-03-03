@@ -77,6 +77,8 @@ void Scene::loadScene(const char *path)
 			loadPointLight(inputFile);
 		else if (type.compare("directional_light") == 0)
 			loadDirectionalLight(inputFile);
+		else if (type.compare("area_light") == 0)
+			loadAreaLight(inputFile);
 		else if (type.compare("sphere") == 0)
 			loadSphere(inputFile);
 		else if (type.compare("poly_set") == 0)
@@ -153,6 +155,32 @@ void Scene::loadDirectionalLight(std::ifstream &inputFile)
 			is >> light->color.x >> light->color.y >> light->color.z;
 		else if (attribute.compare("}") == 0) {
 			lights.push_back(light);
+			return;
+		}
+		else
+			std::cout << "Unknown directional light attribute '" << attribute << "'." << std::endl;
+	}
+}
+
+void Scene::loadAreaLight(std::ifstream &inputFile)
+{
+	AreaLight light;
+	std::string line, attribute;
+	while (std::getline(inputFile, line))
+	{
+		std::istringstream is(line);
+		is >> attribute;
+		if (attribute.compare("position") == 0)
+			is >> light.position.x >> light.position.y >> light.position.z;
+		else if (attribute.compare("direction") == 0)
+			is >> light.direction.x >> light.direction.y >> light.direction.z;
+		else if (attribute.compare("size") == 0)
+			is >> light.width >> light.height;
+		else if (attribute.compare("color") == 0)
+			is >> light.color.x >> light.color.y >> light.color.z;
+		else if (attribute.compare("}") == 0) {
+			AreaLight *areaLight = new AreaLight(light.position, light.direction, light.width, light.height);
+			lights.push_back(areaLight);
 			return;
 		}
 		else
