@@ -1,6 +1,7 @@
 #pragma once
 #include <cmath>
 #include <algorithm>
+#include <iostream>
 
 constexpr float pi = 3.14159265358979f;
 
@@ -134,6 +135,11 @@ public:
 
 	void rotate(float angle, Vector u);
 	void rotateNormal(float angle, Vector u);
+
+	void print()
+	{
+		std::cout << "Vector => X: " << x << " Y: " << y << " Z: " << z << std::endl;
+	}
 };
 
 static float length(const Vector &vector)
@@ -163,3 +169,4 @@ static float radian(float angle)
 
 // Random unit vector in hemisphere of normal
 Vector SampleNormalOrientedHemisphere(const Vector& normal);
+Vector SampleRandomDirection();

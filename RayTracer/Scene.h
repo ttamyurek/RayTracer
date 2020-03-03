@@ -17,6 +17,7 @@ public:
 
 	HitData Intersect(const Ray &ray);
 	Vector ShadowRay(const Ray &shadowRay, float maxDistance);
+	float SampleShadow(Vector position, int SPP);
 	void add(Camera *camera);
 	void add(Light *light);
 	void add(Primitive *primitive);

@@ -61,9 +61,6 @@ Vector Renderer::RenderPixel(int row, int col)
 		return Vector(0.0);
 }
 
-std::default_random_engine generator;
-std::uniform_real_distribution<float> distribution(0, 1);
-
 Vector Renderer::RayCast(int row, int col, int SPP)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
@@ -85,7 +82,7 @@ Vector Renderer::RayCast(int row, int col, int SPP)
 					shadow += scene->ShadowRay(shadowRay, light->distance(hitData.position));
 			}
 			shadow /= SPP;
-			color += shadow;
+			color += shadow * 2;
 		}
 		return color * 5;
 	}

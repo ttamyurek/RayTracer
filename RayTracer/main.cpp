@@ -34,6 +34,13 @@ int main()
 	obj->material = material;
 	scene.add(obj);
 
+	float shadow = scene.SampleShadow(Vector(-3.5, -1.5, 1.5), 512);
+	std::cout << "Shadow: " << shadow << std::endl;
+	shadow = scene.SampleShadow(Vector(-5., -2., 4.), 512);
+	std::cout << "Shadow: " << shadow << std::endl;
+	shadow = scene.SampleShadow(Vector(5.0, 3.0, 0.7), 512);
+	std::cout << "Shadow: " << shadow << std::endl;
+	std::cout << "Shadow: " << shadow << std::endl;
 	/*
 	
 	Camera *camera = new Camera(Vector(-13.f, -10.f, 10.f), Vector(13.0f, 10.0f, -10.0f), Vector(-0.1f, -0.1f, 1.0f), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
