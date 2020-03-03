@@ -14,7 +14,7 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
-			Vector pixelColor = rayCast(i, j, 16);
+			Vector pixelColor = RayCast(i, j, 256);
 			frameBuffer.setPixel(i, j, pixelColor);
 			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
@@ -64,13 +64,13 @@ Vector Renderer::RenderPixel(int row, int col)
 std::default_random_engine generator;
 std::uniform_real_distribution<float> distribution(0, 1);
 
-Vector Renderer::rayCast(int row, int col, int SPP)
+Vector Renderer::RayCast(int row, int col, int SPP)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
 	HitData hitData = scene->Intersect(ray);
 	//TODO: shadowray (shade)
 	Material *material = hitData.material;
-	float shadow(0.0);
+	Vector shadow(0.0);
 	if (hitData.hit)
 	{
 		Vector color(0.0f);
@@ -81,13 +81,13 @@ Vector Renderer::rayCast(int row, int col, int SPP)
 			{
 				Vector rayDir = SampleNormalOrientedHemisphere(hitData.normal);
 				Ray shadowRay(hitData.position, rayDir);
-				if (light->intersect(shadowRay))// ShadowRay(ray, light->distance(hitData.position));
-					shadow++;
+				if (light->intersect(shadowRay))
+					shadow += scene->ShadowRay(shadowRay, light->distance(hitData.position));
 			}
 			shadow /= SPP;
 			color += shadow;
 		}
-		return color;
+		return color * 5;
 	}
 	else
 		return Vector(0.0);

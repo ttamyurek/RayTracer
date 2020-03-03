@@ -84,9 +84,10 @@ public:
 };
 
 class AreaLight : public Light {
-	std::vector<Triangle> lightGeometry;
+	
 
 public:
+	std::vector<Triangle> lightGeometry;
 	Vector position;
 	Vector direction;
 	float width;
@@ -101,16 +102,31 @@ public:
 		this->direction = direction.normalize();
 		this->width = width;
 		this->height = height;
-		lightGeometry.push_back(Triangle(Vector(0.0, 0.0, 0.0), Vector(width, 0.0, 0.0), Vector(0.0, height, 0.0)));
-		lightGeometry.push_back(Triangle(Vector(width, 0.0, 0.0), Vector(width, height, 0.0), Vector(0.0, height, 0.0)));
-		Vector axis = cross(Vector(0.0, 0.0, 1.0), this->direction).normalize();
-		float angle = atan(direction.x / direction.y);
+		//Vector up = cross(Vector(1, 0, 0), direction).normalize() * height / 2;
+		//Vector right = cross(Vector(0,0,1), direction).normalize() * width / 2;
+		//lightGeometry.push_back(Triangle(position + Vector(-width / 2.0, -height / 2.0, 0.0), position + Vector(width / 2.0, -height / 2.0, 0.0), position + Vector(-width / 2.0, height / 2.0, 0.0)));
+		//lightGeometry.push_back(Triangle(position + Vector(width / 2.0, -height / 2.0, 0.0), position + Vector(width / 2.0, height / 2.0, 0.0), position + Vector(-width / 2.0, height / 2.0, 0.0)));
+		
+		lightGeometry.push_back(Triangle(position + Vector(-width / 2.0, height / 2.0, 0.0), position + Vector(width / 2.0, -height / 2.0, 0.0), position + Vector(-width / 2.0, -height / 2.0, 0.0)));
+		lightGeometry.push_back(Triangle(position + Vector(-width / 2.0, height / 2.0, 0.0), position + Vector(width / 2.0, height / 2.0, 0.0), position + Vector(width / 2.0, -height / 2.0, 0.0)));
+
+		//lightGeometry.push_back(Triangle(position - up - right, position - right + up, position + right - up));
+		//lightGeometry.push_back(Triangle(position - right + up, position + right + up, position + right - up));
+		/*
 		for (int i = 0; i < lightGeometry.size(); i++)
 		{
+			Vector axis = cross(Vector(0.0, 0.0, 1.0), this->direction).normalize();
+			float angle = direction.x == 0. && direction.y == 0. ? 0.0 : atan(direction.x / direction.y);
 			lightGeometry[i].rotate(angle, axis);
+			//axis = cross(Vector(0.0, 1.0, 0.0), this->direction).normalize();
+			//angle = direction.x == 0. && direction.z == 0. ? 0.0 : atan(direction.x / direction.z);
+			//lightGeometry[i].rotate(angle, axis);
+			//axis = cross(Vector(1.0, 0.0, 0.0), this->direction).normalize();
+			//angle = direction.y == 0. && direction.z == 0. ? 0.0 : atan(direction.y / direction.z);
+			//lightGeometry[i].rotate(angle, axis);
 			lightGeometry[i].n0 = lightGeometry[i].n1 = lightGeometry[i].n2 = this->direction;
 		}
-		
+		*/
 	}
 
 	Vector getDirection(const Vector &position) const

@@ -13,9 +13,39 @@ using namespace std;
 int main()
 {
 	Scene scene(IMAGE_WIDTH, IMAGE_HEIGHT);
-	scene.loadScene("Scenes/area_light.ascii");
-	//scene.loadOBJ("Objects/horse.obj");
-	//scene.objects[1]->rotate(radian(-90.0), Vector(1.0, 0.0, 0.0));
+	//scene.loadScene("Scenes/area_light.ascii");
+	scene.loadOBJ("Objects/simple_scene.obj");
+	AreaLight *light = new AreaLight(Vector(-5., -2., 5.), Vector(0., 0., 1.), 2, 2);
+	Camera *camera = new Camera(Vector(-13.f, -10.f, 10.f), Vector(13.0f, 10.0f, -10.0f), Vector(-0.1f, -0.1f, 1.0f), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
+	scene.add(camera);
+	//Camera *camera = new Camera(Vector(-12.f, -0.f, 5.f), Vector(1.0, 0.0, -0.1), Vector(0.1f, 0.0f, 1.0f), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
+	//scene.add(camera);
+	PointLight *plight = new PointLight(Vector(0., 0., 1));
+	scene.add(light);
+	Object *obj = new Object;
+	obj->add(&light->lightGeometry[0]);
+	obj->add(&light->lightGeometry[1]);
+	//obj->rotate(radian(-45), Vector(0, 1, 0));
+	//obj->rotate(radian(45), Vector(1, 0, 0));
+	scene.add(&light->lightGeometry[0]);
+	scene.add(&light->lightGeometry[1]);
+	Material *material = new Material(Vector(0.2f, 0.3f, 0.6f));
+	material->glossiness = 0.3;
+	obj->material = material;
+	scene.add(obj);
+
+	/*
+	
+	Camera *camera = new Camera(Vector(-13.f, -10.f, 10.f), Vector(13.0f, 10.0f, -10.0f), Vector(-0.1f, -0.1f, 1.0f), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
+	scene.add(camera);
+	AreaLight *light = new AreaLight(Vector(-13., 1., 10.), Vector(13., -1., -10.), 5, 5);
+	DirectionalLight *dirlight = new DirectionalLight(Vector(13., 5., -10.));
+	PointLight *plight = new PointLight(Vector(-13., -5., 10.));
+	scene.add(plight);
+	Material *material = new Material(Vector(0.2f, 0.3f, 0.6f));
+	material->glossiness = 0.3;
+	scene.objects[0]->material = material;
+	*/
 	/*Camera camera(Vector(0.0f), Vector(1.0f, 0.0f, 0.0f), Vector(0.0f, 0.0f, 1.0f), 10, 45.0 * 3.1415 / 180.0, 512, 512);
 	PointLight plight(Vector(10.0f, 0.0f, 2.5f));
 	scene.add(&plight);

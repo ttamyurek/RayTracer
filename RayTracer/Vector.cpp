@@ -67,6 +67,14 @@ Vector& Vector::operator*=(const Vector& vector) {
 	this->z *= vector.z;
 	return *this;
 }
+
+Vector& Vector::operator/=(const Vector& vector) {
+	this->x /= vector.x;
+	this->y /= vector.y;
+	this->z /= vector.z;
+	return *this;
+}
+
 Vector Vector::cross(const Vector& vector) const {
 	// x    y    z
 	//v[x] v[y] v[z]

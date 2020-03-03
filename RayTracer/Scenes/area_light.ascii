@@ -7,10 +7,10 @@ camera {
   verticalFOV 0.785398
 }
 area_light {
-  position 2.47975 5 -4.72242
-  direction 5 -10 -2
-  color 0.2 0.2 0.2
-  size 1 1
+  position 10.30154 3.91592 -0.31347
+  direction -0.764302 -0.392387 0.511737
+  color 1 1 1
+  size 5 5
 }
 poly_set {
   name NULL

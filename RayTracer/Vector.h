@@ -41,6 +41,7 @@ public:
 	// Division
 	Vector operator/(float scalar) const;
 	Vector operator/(const Vector& vector) const;
+	Vector& operator/=(const Vector& vector);
 
 	// Cross Product
 	Vector cross(const Vector& vector) const;
@@ -126,7 +127,8 @@ public:
 	}
 
 	Vector normalize() const {
-		return *this / length();
+		
+		return length() != 0.0f ? *this / length(): *this;
 	}
 
 
