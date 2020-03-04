@@ -14,7 +14,7 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
-			Vector pixelColor = RayCast(i, j, 512);
+			Vector pixelColor = TraceLight(i, j, 64);
 			frameBuffer.setPixel(i, j, pixelColor);
 			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
@@ -65,8 +65,6 @@ Vector Renderer::RayCast(int row, int col, int SPP)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
 	HitData hitData = scene->Intersect(ray);
-	//TODO: shadowray (shade)
-	Material *material = hitData.material;
 	Vector shadow(0.0);
 	if (hitData.hit)
 	{
@@ -85,6 +83,37 @@ Vector Renderer::RayCast(int row, int col, int SPP)
 			color += shadow * 2;
 		}
 		return color * 5;
+	}
+	else
+		return Vector(0.0);
+}
+
+Vector Renderer::TraceLight(int row, int col, int SPP)
+{
+	Ray ray = scene->camera->shootRay(row, col);
+	HitData hitData = scene->Intersect(ray);
+	Vector shadow(0.0);
+	if (hitData.hit)
+	{
+		Vector color(0.0f);
+		Vector directIllumination(0.0f);
+		for (auto &light : scene->lights)
+		{
+			AreaLight &areaLight = dynamic_cast<AreaLight&>(*light);
+			int index = 0;
+			for (int i = 0; i < SPP; i++)
+			{
+				if (i == SPP / 2) index = 0;
+				Vector targetPoint = areaLight.sample(index);
+				Vector rayDir = targetPoint - hitData.position;
+				Ray shadowRay(hitData.position, rayDir);
+				if (areaLight.intersect(shadowRay))
+					shadow += scene->ShadowRay(shadowRay, rayDir.length());
+			}
+			shadow /= SPP;
+			color += shadow * std::max(dot((hitData.position - areaLight.position).normalize(), areaLight.direction), 0.0f) * areaLight.color *areaLight.getAttenuation(hitData.position);
+		}
+		return color;
 	}
 	else
 		return Vector(0.0);

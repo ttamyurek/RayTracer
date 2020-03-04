@@ -45,11 +45,16 @@ float Scene::SampleShadow(Vector position, int SPP)
 	Vector color = 0.0;
 	for (auto &light : lights)
 	{
+		AreaLight &areaLight = dynamic_cast<AreaLight&>(*light);
+		int index = 0;
 		for (int i = 0; i < SPP; i++)
 		{
-			Ray ray = Ray(position, SampleRandomDirection());
-			if (light->intersect(ray))
-				shadow += ShadowRay(ray, light->distance(position));
+			if (i == SPP / 2) index = 1;
+			Vector targetPoint = areaLight.sample(index);
+			Vector rayDir = targetPoint - position;
+			Ray shadowRay(position, rayDir);
+			if (areaLight.intersect(shadowRay))
+				shadow += ShadowRay(shadowRay, rayDir.length());
 		}
 		shadow /= SPP;
 		color += shadow;
@@ -197,7 +202,7 @@ void Scene::loadAreaLight(std::ifstream &inputFile)
 		else if (attribute.compare("color") == 0)
 			is >> light.color.x >> light.color.y >> light.color.z;
 		else if (attribute.compare("}") == 0) {
-			AreaLight *areaLight = new AreaLight(light.position, light.direction, light.width, light.height);
+			AreaLight *areaLight = new AreaLight(light.position, light.direction, light.color, light.width, light.height);
 			lights.push_back(areaLight);
 			return;
 		}

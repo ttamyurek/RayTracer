@@ -9,4 +9,5 @@ public:
 
 	Vector RenderPixel(int row, int col);
 	Vector RayCast(int row, int col, int SPP);
+	Vector TraceLight(int row, int col, int SPP);
 };

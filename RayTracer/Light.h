@@ -90,18 +90,20 @@ public:
 	std::vector<Triangle> lightGeometry;
 	Vector position;
 	Vector direction;
+	Vector color;
 	float width;
 	float height;
 	
 	AreaLight()
 	{}
 
-	AreaLight(Vector position, Vector direction, float width, float height)
+	AreaLight(Vector position, Vector direction, Vector color, float width, float height)
 	{
 		this->position = position;
 		this->direction = direction.normalize();
 		this->width = width;
 		this->height = height;
+		this->color = color;
 		//Vector up = cross(Vector(1, 0, 0), direction).normalize() * height / 2;
 		//Vector right = cross(Vector(0,0,1), direction).normalize() * width / 2;
 		//lightGeometry.push_back(Triangle(position + Vector(-width / 2.0, -height / 2.0, 0.0), position + Vector(width / 2.0, -height / 2.0, 0.0), position + Vector(-width / 2.0, height / 2.0, 0.0)));
@@ -139,14 +141,21 @@ public:
 		return length(this->position - position);
 	}
 
+
 	float getAttenuation(const Vector &position) const
 	{
-		return 1.0f;
+		float dist = distance(position);
+		return std::min(1.0, 1 / (0.25 + 0.1 * dist + 0.01 * dist * dist));
 	}
 
 	bool intersect(const Ray &ray)
 	{
 		return lightGeometry[0].Intersect(ray) || lightGeometry[1].Intersect(ray);
+	}
+
+	Vector sample(int index) //TODO: Make it random
+	{
+		return lightGeometry[index].sample().point;
 	}
 
 };
