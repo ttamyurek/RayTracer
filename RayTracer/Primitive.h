@@ -7,6 +7,12 @@
 class HitData;
 class Object;
 
+typedef struct {
+	Vector point;
+	Vector normal;
+	float area;
+} SurfaceSample;
+
 class Primitive
 {
 public:
@@ -85,6 +91,29 @@ public:
 
 	bool Intersect(const Ray & ray);
 
+	SurfaceSample sample()
+	{
+		SurfaceSample sample;
+		float r1 = rand() / (float)RAND_MAX;
+		float r2 = rand() / (float)RAND_MAX;
+
+		float alpha = 1 - sqrt(r1);
+		float beta = sqrt(r1) * (1 - r2);
+		float gamma = 1 - alpha - beta;
+
+		sample.point = v0 * alpha + v1 * beta + v2 * gamma;
+		sample.normal = n0 * alpha + n1 * beta + n2 * gamma;
+		sample.area = area();
+
+		return sample;
+	}
+
+	float area() const
+	{
+		Vector product = cross(v1 - v0, v2 - v0);
+		return length(product) / 2.0f;
+	}
+
 	void calculateNormal()
 	{
 		n0 = n1 = n2 = cross(v1 - v0, v2 - v0).normalize();
@@ -95,7 +124,7 @@ public:
 		v0.rotate(angle, axis);
 		v1.rotate(angle, axis);
 		v2.rotate(angle, axis);
-
+		//TODO: Fix rotateNormal
 		n0.rotateNormal(angle, axis);
 		n1.rotateNormal(angle, axis);
 		n2.rotateNormal(angle, axis);

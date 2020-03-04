@@ -160,16 +160,19 @@ Vector SampleNormalOrientedHemisphere(const Vector& normal) {
 }
 
 std::default_random_engine generator;
-std::uniform_real_distribution<float> distribution(0.0, 1.0);
+std::uniform_real_distribution<float> distribution(-1.0, 1.0);
 
 Vector SampleRandomDirection()
 {
-	float R = 1.0f;
+	/*float R = 1.0f;
 	float theta = distribution(generator) * pi;
 	float phi = distribution(generator) * 2.0 * pi;
 	float X = R * sin(theta) * cos(phi);
 	float Y = R * sin(theta) * sin(phi);
-	float Z = R * cos(theta);
+	float Z = R * cos(theta);*/
+	float X = distribution(generator);
+	float Y = distribution(generator);
+	float Z = distribution(generator);
 	return Vector(X, Y, Z).normalize();
 }
 
