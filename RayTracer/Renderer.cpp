@@ -14,7 +14,7 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
-			Vector pixelColor = TraceLight(i, j, 64);
+			Vector pixelColor = TraceLight(i, j, 128);
 			frameBuffer.setPixel(i, j, pixelColor);
 			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
@@ -104,8 +104,8 @@ Vector Renderer::TraceLight(int row, int col, int SPP)
 			{
 				if (i == SPP / 2) index = 1;
 				Vector targetPoint = areaLight.sample(index);
-				Vector rayDir = targetPoint - (hitData.position + hitData.normal * 0.00001);
-				Ray shadowRay(hitData.position, rayDir);
+				Vector rayDir = targetPoint - (hitData.position + hitData.normal * 0.001);
+				Ray shadowRay(hitData.position + hitData.normal * 0.001, rayDir);
 				shadow += scene->ShadowRay(shadowRay, rayDir.length());
 			}
 			shadow /= SPP;
