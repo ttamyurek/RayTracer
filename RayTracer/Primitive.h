@@ -19,6 +19,7 @@ public:
 	Object* parent;
 	virtual bool Intersect(const Ray &ray, HitData &hitData) = 0;
 	virtual void rotate(float angle, Vector axis) = 0;
+	virtual SurfaceSample sample() = 0;
 };
 
 class Sphere : public Primitive
@@ -47,6 +48,19 @@ public:
 		yaxis.rotate(angle, axis);
 		zaxis.rotate(angle, axis);
 
+	}
+
+	SurfaceSample sample()
+	{
+		SurfaceSample sample;
+		float r1 = rand() / (float)RAND_MAX;
+		float r2 = rand() / (float)RAND_MAX;
+
+		float alpha = 1 - sqrt(r1);
+		float beta = sqrt(r1) * (1 - r2);
+		float gamma = 1 - alpha - beta;
+
+		return sample;
 	}
 };
 

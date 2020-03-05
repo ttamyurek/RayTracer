@@ -29,7 +29,6 @@ Vector Renderer::RenderPixel(int row, int col)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
 	HitData hitData = scene->Intersect(ray);
-	//TODO: shadowray (shade)
 	Material *material = hitData.material;
 	Vector shadowFactor(1.0);
 	if (hitData.hit)
@@ -103,12 +102,11 @@ Vector Renderer::TraceLight(int row, int col, int SPP)
 			int index = 0;
 			for (int i = 0; i < SPP; i++)
 			{
-				if (i == SPP / 2) index = 0;
+				if (i == SPP / 2) index = 1;
 				Vector targetPoint = areaLight.sample(index);
-				Vector rayDir = targetPoint - hitData.position;
+				Vector rayDir = targetPoint - (hitData.position + hitData.normal * 0.00001);
 				Ray shadowRay(hitData.position, rayDir);
-				if (areaLight.intersect(shadowRay))
-					shadow += scene->ShadowRay(shadowRay, rayDir.length());
+				shadow += scene->ShadowRay(shadowRay, rayDir.length());
 			}
 			shadow /= SPP;
 			color += shadow * std::max(dot((hitData.position - areaLight.position).normalize(), areaLight.direction), 0.0f) * areaLight.color *areaLight.getAttenuation(hitData.position);
@@ -117,4 +115,36 @@ Vector Renderer::TraceLight(int row, int col, int SPP)
 	}
 	else
 		return Vector(0.0);
+}
+
+
+Vector Renderer::TraceRayFromPoint(Vector point)
+{
+	Vector rayDirection(point - scene->camera->position);
+	int X, Y;
+	if (scene->camera->IntersectImagePlane(point, X, Y))
+	{
+		return Vector(1.0);
+	}
+	else
+		return Vector(0.0);
+}
+
+bool Renderer::RenderRandom(Scene *scene, const char *outputFile)
+{
+	this->scene = scene;
+	int imageWidth = scene->camera->imageWidth;
+	int imageHeight = scene->camera->imageHeight;
+	Image frameBuffer(imageWidth, imageHeight);
+	int X, Y;
+	for (int i = 0; i < 10000; i++)
+	{
+		Vector point = this->scene->primitives.at(0)->sample().point;
+		Vector pixelColor = scene->camera->IntersectImagePlane(point, X, Y) ? Vector(1.) : Vector(0.);
+		frameBuffer.setPixel(Y, X, pixelColor);
+	}
+
+	frameBuffer.save(outputFile);
+
+	return true;
 }

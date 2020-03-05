@@ -56,4 +56,18 @@ public:
 
 		return Ray(position, rayDirection);
 	}
+
+	bool IntersectImagePlane(Vector point, int & pixelX, int & pixelY)
+	{
+		Vector rayDir(point - position);
+		Vector horizontalOffset = rightDir * dot(rightDir, rayDir) + horizontal;
+		Vector verticalOffset = upDir * dot(upDir, rayDir) + vertical;
+		pixelX = horizontalOffset.length() * (imageWidth / 2) / horizontal.length();
+		pixelY = verticalOffset.length() * (imageHeight / 2) / vertical.length();
+		if (pixelX > imageWidth || pixelX < 0 || pixelY > imageHeight || pixelY < 0)
+		{
+			return true;
+		}
+		else false;
+	}
 };
