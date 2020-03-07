@@ -19,7 +19,7 @@ int main()
 	PointLight *plight1 = new PointLight(Vector(0., 0., 1));
 	scene.add(plight1);
 	Renderer renderer1;
-	renderer1.RenderDepth(&scene, "Render Outputs/render_horse.bmp");
+	renderer1.Render(&scene, "Render Outputs/render_horse.bmp");
 	/*
 	Camera *camera = new Camera(Vector(-12, 0, 0), Vector(1, 0, 0), Vector(0, 0, 1), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.add(camera);
