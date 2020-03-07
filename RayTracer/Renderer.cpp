@@ -14,7 +14,7 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 	{
 		for (int j = 0; j < imageWidth; j++)
 		{
-			Vector pixelColor = TraceLight(i, j, 128);
+			Vector pixelColor = RenderPixel(i, j);
 			frameBuffer.setPixel(i, j, pixelColor);
 			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
@@ -60,7 +60,7 @@ Vector Renderer::RenderPixel(int row, int col)
 		return Vector(0.0);
 }
 
-Vector Renderer::RayCast(int row, int col, int SPP)
+Vector Renderer::TracePath(int row, int col, int SPP)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
 	HitData hitData = scene->Intersect(ray);
@@ -79,9 +79,9 @@ Vector Renderer::RayCast(int row, int col, int SPP)
 					shadow += scene->ShadowRay(shadowRay, light->distance(hitData.position));
 			}
 			shadow /= SPP;
-			color += shadow * 2;
+			color += shadow;
 		}
-		return color * 5;
+		return color;
 	}
 	else
 		return Vector(0.0);
@@ -142,6 +142,35 @@ bool Renderer::RenderRandom(Scene *scene, const char *outputFile)
 		Vector point = this->scene->primitives.at(0)->sample().point;
 		Vector pixelColor = scene->camera->IntersectImagePlane(point, X, Y) ? Vector(1.) : Vector(0.);
 		frameBuffer.setPixel(Y, X, pixelColor);
+	}
+
+	frameBuffer.save(outputFile);
+
+	return true;
+}
+
+bool Renderer::RenderDepth(Scene *scene, const char *outputFile)
+{
+	this->scene = scene;
+	int imageWidth = scene->camera->imageWidth;
+	int imageHeight = scene->camera->imageHeight;
+	Image frameBuffer(imageWidth, imageHeight);
+	float maxDistance = 50.0f;
+	for (int i = 0; i < imageHeight; i++)
+	{
+		for (int j = 0; j < imageWidth; j++)
+		{
+			Ray ray = scene->camera->shootRay(i, j); // (Row, Col)
+			HitData hitData = scene->Intersect(ray);
+			Vector pixelColorRaw;
+			if (hitData.hit && hitData.t <= maxDistance)
+				pixelColorRaw = Vector(maxDistance - hitData.t);
+			else
+				pixelColorRaw = Vector(0.0);
+			Vector pixelColor = pixelColorRaw / maxDistance;
+			frameBuffer.setPixel(i, j, pixelColor);
+			if (j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
+		}
 	}
 
 	frameBuffer.save(outputFile);
