@@ -4,7 +4,19 @@
 #include <iostream>
 #include <string>
 
-HitData Scene::Intersect(const Ray &ray)
+bool Scene::Intersect(const Ray &ray)
+{
+	for (auto primitive : primitives)
+	{
+		if (primitive->Intersect(ray))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+HitData Scene::ClosestIntersection(const Ray &ray)
 {
 	HitData closestHitData;
 	HitData hitData;

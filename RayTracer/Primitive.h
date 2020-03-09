@@ -18,6 +18,7 @@ class Primitive
 public:
 	Object* parent;
 	virtual bool Intersect(const Ray &ray, HitData &hitData) = 0;
+	virtual bool Intersect(const Ray & ray) = 0;
 	virtual void rotate(float angle, Vector axis) = 0;
 	virtual SurfaceSample sample() = 0;
 };
@@ -41,6 +42,7 @@ public:
 	}
 
 	bool Intersect(const Ray &ray, HitData &hitData);
+	bool Intersect(const Ray & ray);
 
 	void rotate(float angle, Vector axis)
 	{

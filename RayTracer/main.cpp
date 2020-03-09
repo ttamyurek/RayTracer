@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Primitive.h"
 #include "Renderer.h"
+#include "Sampler.h"
 
 #define IMAGE_WIDTH 512
 #define IMAGE_HEIGHT 512
@@ -14,12 +15,15 @@ int main()
 {
 	Scene scene(IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.loadOBJ("Objects/horse.obj");
+	Sampler sampler;
+	sampler.SampleSceneRayIntersection(scene, 500000, "Samples/RayIntersectionData.csv");
+
 	Camera *camera1 = new Camera(Vector(-13.f, -10.f, 10.f), Vector(13.0f, 10.0f, -10.0f), Vector(-0.1f, -0.1f, 1.0f), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.add(camera1);
 	PointLight *plight1 = new PointLight(Vector(0., 0., 1));
 	scene.add(plight1);
 	Renderer renderer1;
-	renderer1.Render(&scene, "Render Outputs/render_horse.bmp");
+	//renderer1.Render(&scene, "Render Outputs/render_horse.bmp");
 	/*
 	Camera *camera = new Camera(Vector(-12, 0, 0), Vector(1, 0, 0), Vector(0, 0, 1), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.add(camera);

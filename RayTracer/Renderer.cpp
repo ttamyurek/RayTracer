@@ -28,7 +28,7 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 Vector Renderer::RenderPixel(int row, int col)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
-	HitData hitData = scene->Intersect(ray);
+	HitData hitData = scene->ClosestIntersection(ray);
 	Material *material = hitData.material;
 	Vector shadowFactor(1.0);
 	if (hitData.hit)
@@ -49,7 +49,7 @@ Vector Renderer::RenderPixel(int row, int col)
 		}
 		//Vector reflectedRayDir = ray.direction().reflect(hitData.position).normalize();
 		//ray = Ray(hitData.position, reflectedRayDir);
-		//hitData = scene->Intersect(ray);
+		//hitData = scene->ClosestIntersection(ray);
 		//Vector refRadiance = hitData.hit ? hitData.material->diffuse: Vector(0.0);
 		//Vector refComp = material->specular * refRadiance;
 		Vector ambComp = material->ambient * material->diffuse * material->opacity;
@@ -63,7 +63,7 @@ Vector Renderer::RenderPixel(int row, int col)
 Vector Renderer::TracePath(int row, int col, int SPP)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
-	HitData hitData = scene->Intersect(ray);
+	HitData hitData = scene->ClosestIntersection(ray);
 	Vector shadow(0.0);
 	if (hitData.hit)
 	{
@@ -90,7 +90,7 @@ Vector Renderer::TracePath(int row, int col, int SPP)
 Vector Renderer::TraceLight(int row, int col, int SPP)
 {
 	Ray ray = scene->camera->shootRay(row, col);
-	HitData hitData = scene->Intersect(ray);
+	HitData hitData = scene->ClosestIntersection(ray);
 	Vector shadow(0.0);
 	if (hitData.hit)
 	{
@@ -161,7 +161,7 @@ bool Renderer::RenderDepth(Scene *scene, const char *outputFile)
 		for (int j = 0; j < imageWidth; j++)
 		{
 			Ray ray = scene->camera->shootRay(i, j); // (Row, Col)
-			HitData hitData = scene->Intersect(ray);
+			HitData hitData = scene->ClosestIntersection(ray);
 			Vector pixelColorRaw;
 			if (hitData.hit && hitData.t <= maxDistance)
 				pixelColorRaw = Vector(maxDistance - hitData.t);

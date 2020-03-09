@@ -15,7 +15,9 @@ public:
 	std::vector<Material*> materials;
 	Camera *camera;
 
-	HitData Intersect(const Ray &ray);
+	bool Intersect(const Ray & ray);
+
+	HitData ClosestIntersection(const Ray &ray);
 	Vector ShadowRay(const Ray &shadowRay, float maxDistance);
 	float SampleShadow(Vector position, int SPP);
 	void add(Camera *camera);

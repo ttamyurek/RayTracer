@@ -92,3 +92,8 @@ bool Sphere::Intersect(const Ray &ray, HitData &hitData)
 {
 	return false;
 }
+
+bool Sphere::Intersect(const Ray & ray)
+{
+	return false;
+}
