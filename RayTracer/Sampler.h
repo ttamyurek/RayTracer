@@ -3,5 +3,6 @@
 
 class Sampler {
 public:
-	void SampleSceneRayIntersection(Scene & scene, int trials, const char * outputFile);
+	void SampleRayIntersection(Scene & scene, int trials, const char * outputFile);
+	void SampleRayIntersectionDepth(Scene & scene, int trials, const char * outputFile);
 };

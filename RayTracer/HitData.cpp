@@ -5,7 +5,7 @@ HitData::HitData()
 	hit = false;
 	position = Vector(0.0);
 	normal = Vector(0.0);
-	t = 0.0;
+	t = infinity;
 	uv.u = uv.v = 0.0;
 	material = nullptr;
 	primitive = nullptr;

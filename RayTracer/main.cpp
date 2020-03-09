@@ -16,7 +16,7 @@ int main()
 	Scene scene(IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.loadOBJ("Objects/horse.obj");
 	Sampler sampler;
-	sampler.SampleSceneRayIntersection(scene, 500000, "Samples/RayIntersectionData.csv");
+	sampler.SampleRayIntersection(scene, 500000, "Samples/RayIntersectionData.csv");
 
 	Camera *camera1 = new Camera(Vector(-13.f, -10.f, 10.f), Vector(13.0f, 10.0f, -10.0f), Vector(-0.1f, -0.1f, 1.0f), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.add(camera1);

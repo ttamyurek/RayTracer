@@ -1,5 +1,5 @@
 #include "Vector.h"
-#include <random>
+#include "RandomGenerator.h"
 
 Vector::Vector() {
 	x = y = z = 0.0f;
@@ -159,21 +159,17 @@ Vector SampleNormalOrientedHemisphere(const Vector& normal) {
 		sample.x * bitangent.z + sample.y * normal.z + sample.z * tangent.z);
 }
 
-std::default_random_engine generator;
-std::uniform_real_distribution<float> distribution(-1.0, 1.0);
-
 Vector SampleRandomDirection()
 {
-	/*float R = 1.0f;
-	float theta = distribution(generator) * pi;
-	float phi = distribution(generator) * 2.0 * pi;
-	float X = R * sin(theta) * cos(phi);
-	float Y = R * sin(theta) * sin(phi);
-	float Z = R * cos(theta);*/
-	float X = distribution(generator);
-	float Y = distribution(generator);
-	float Z = distribution(generator);
-	return Vector(X, Y, Z).normalize();
+	//https://mathworld.wolfram.com/SpherePointPicking.html
+
+	float theta = 2 * pi * randf();
+	float phi = acos(randf(-1, 1));
+
+	float X = sin(theta) * cos(phi);
+	float Y = sin(theta) * sin(phi);
+	float Z = cos(theta);
+	return Vector(X, Y, Z);
 }
 
 void Vector::CreateNormalSpace(Vector& tangent, Vector& bitangent) const {
