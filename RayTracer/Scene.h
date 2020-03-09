@@ -34,7 +34,6 @@ public:
 	}
 
 	int imageWidth, imageHeight;
-	bool loadOBJ(const char * path);
 private:
 	void loadCamera(std::ifstream &inputFile);
 	void loadPointLight(std::ifstream & inputFile);
