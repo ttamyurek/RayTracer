@@ -7,7 +7,7 @@ void Sampler::SampleSceneRayIntersection(Scene & scene, int trials, const char *
 {
 	std::ofstream rayIntersectionFile;
 	rayIntersectionFile.open(outputFile);
-	rayIntersectionFile << "X, Y, Z, Theta, Phi, Intersection" << std::endl;
+	rayIntersectionFile << "X,Y,Z,Theta,Phi,Intersection" << std::endl;
 	for (int i = 0; i < trials; i++)
 	{
 		float R = 1.0f;
@@ -20,7 +20,7 @@ void Sampler::SampleSceneRayIntersection(Scene & scene, int trials, const char *
 		Vector rayDirection(X, Y, Z);
 		Ray randomRay(rayOrigin, rayDirection);
 		//<< std::setprecision(8)
-		rayIntersectionFile  << rayOrigin.x << ", " << rayOrigin.y << ", " << rayOrigin.z << ", " << theta << ", " << phi << ", " << scene.Intersect(randomRay) << std::endl;
+		rayIntersectionFile  << rayOrigin.x << "," << rayOrigin.y << "," << rayOrigin.z << "," << theta << "," << phi << "," << scene.Intersect(randomRay) << std::endl;
 		if(i % 1000 == 0)
 			std::cout << "Sample #" <<  i << " out of " << trials << std::endl;
 	}
