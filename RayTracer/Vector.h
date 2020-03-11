@@ -140,6 +140,16 @@ public:
 	{
 		std::cout << "Vector => X: " << x << " Y: " << y << " Z: " << z << std::endl;
 	}
+
+	Vector sphericalCoordinates()
+	{
+		if (this->length() == 0 || (x == 0 && y == 0))
+			return Vector(0.0);
+		float r = this->length();
+		float theta = acos(z / r);
+		float phi = atan(y / x);
+		return Vector(r, theta, phi);
+	}
 };
 
 static float length(const Vector &vector)

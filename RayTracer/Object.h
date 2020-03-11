@@ -94,7 +94,7 @@ static Object* loadOBJ(const char * path)
 				getline(is, index, ' ');
 				normalIndex[i] = stoi(index);
 			}
-			Triangle *triangle = new Triangle();
+			Triangle *triangle = new Triangle;
 			triangle->v0 = temp_vertices[vertexIndex[0] - 1];
 			triangle->v1 = temp_vertices[vertexIndex[1] - 1];
 			triangle->v2 = temp_vertices[vertexIndex[2] - 1];

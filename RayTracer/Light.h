@@ -21,9 +21,10 @@ public:
 	PointLight()
 	{}
 
-	PointLight(Vector position)
+	PointLight(Vector position, Vector color)
 	{
 		this->position = position;
+		this->color = color;
 	}
 
 	Vector getDirection(const Vector &position) const
@@ -52,9 +53,10 @@ public:
 	float maxDistance = 100.0f;
 	DirectionalLight()
 	{}
-	DirectionalLight(Vector direction)
+	DirectionalLight(Vector direction, Vector color)
 	{
 		this->direction = direction.normalize();
+		this->color = color;
 	}
 
 	DirectionalLight(Vector direction, float maxDistance)

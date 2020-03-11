@@ -20,6 +20,7 @@ void Sampler::SampleRayIntersection(Scene & scene, int trials, const char *outpu
 		float Z = cos(theta);
 
 		Vector rayOrigin(randf(-1, 1), randf(-1, 1), randf(-1, 1));
+		//Vector rayOrigin(0, 1, 0);
 		Vector rayDirection(X, Y, Z);
 		Ray randomRay(rayOrigin, rayDirection);
 		//<< std::setprecision(8)

@@ -6,8 +6,8 @@
 #include "Renderer.h"
 #include "Sampler.h"
 
-#define IMAGE_WIDTH 512
-#define IMAGE_HEIGHT 512
+constexpr int IMAGE_WIDTH = 512;
+constexpr int IMAGE_HEIGHT = 512;
 
 using namespace std;
 
@@ -18,14 +18,14 @@ int main()
 	scene.add(horse);
 
 	Sampler sampler;
-	//sampler.SampleRayIntersection(scene, 500000, "Samples/RayIntersectionData.csv");
+	sampler.SampleRayIntersection(scene, 500000, "Samples/RayIntersectionData.csv");
 	horse->material->specular = 0.1;
 	Camera *camera1 = new Camera(Vector(0, 1, 0.0), Vector(0, -1, 0), Vector(0, 0, 1), 1, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.add(camera1);
-	PointLight *plight1 = new PointLight(Vector(0, 1, 1));
+	PointLight *plight1 = new PointLight(Vector(0, 1, 0), Vector(0.5));
 	scene.add(plight1);
 	Renderer renderer1;
-	renderer1.Render(&scene, "Render Outputs/render_horse.bmp");
+	//renderer1.Render(&scene, "Render Outputs/render_horse.bmp");
 	/*
 	Camera *camera = new Camera(Vector(-12, 0, 0), Vector(1, 0, 0), Vector(0, 0, 1), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
 	scene.add(camera);
@@ -44,7 +44,7 @@ int main()
 	AreaLight *light = new AreaLight(Vector(-5., -2., 5.), Vector(0., 0., -1.), Vector(1.0), 1, 1);
 	Camera *camera = new Camera(Vector(-13.f, -10.f, 10.f), Vector(13.0f, 10.0f, -10.0f), Vector(-0.1f, -0.1f, 1.0f), 10, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
 	simpleScene.add(camera);
-	PointLight *plight = new PointLight(Vector(0., 0., 1));
+	PointLight *plight = new PointLight(Vector(0., 0., 1), Vector(0.5));
 	simpleScene.add(light);
 	Object *obj = new Object;
 	obj->add(&light->lightGeometry[0]);

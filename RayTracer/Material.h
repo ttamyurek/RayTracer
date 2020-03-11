@@ -14,7 +14,7 @@ public:
 
 	Material()
 	{
-		ambient = Vector(1.0f);
+		ambient = Vector(0.2f);
 		diffuse = Vector(0.5f);
 		specular = Vector(1.0f);
 		emissive = Vector(0.0f);
