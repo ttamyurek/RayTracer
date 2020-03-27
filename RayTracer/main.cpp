@@ -17,11 +17,13 @@ int main()
 	Object *horse = loadOBJ("Objects/horse.obj");
 	scene.add(horse);
 
+	Camera* camera1 = new Camera(Vector(0, 1, 0), Vector(0, -1, 0), Vector(0, 0, 1), 1, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
+	scene.add(camera1);
+
 	Sampler sampler;
 	sampler.SampleRayIntersection(scene, 500000, "Samples/RayIntersectionData.csv");
 	horse->material->specular = 0.1;
-	Camera *camera1 = new Camera(Vector(0, 1, 0.0), Vector(0, -1, 0), Vector(0, 0, 1), 1, radian(45), IMAGE_WIDTH, IMAGE_HEIGHT);
-	scene.add(camera1);
+	
 	PointLight *plight1 = new PointLight(Vector(0, 1, 0), Vector(0.5));
 	scene.add(plight1);
 	Renderer renderer1;

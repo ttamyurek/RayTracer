@@ -1,6 +1,7 @@
 #pragma once
 #include "Vector.h"
 #include "Ray.h"
+#include "RandomGenerator.h"
 
 class Camera {
 private:
@@ -35,7 +36,7 @@ public:
 
 		this->imageWidth = imageWidth;
 		this->imageHeight = imageHeight;
-		this->aspectRatio = (float) imageWidth / imageHeight;
+		this->aspectRatio = (float)imageWidth / imageHeight;
 
 		this->rightDir = this->viewDir.cross(upDir).normalize(); // A = V x U
 		this->upDir = rightDir.cross(this->viewDir).normalize(); // B = A x V
@@ -57,7 +58,18 @@ public:
 		return Ray(position, rayDirection);
 	}
 
-	bool IntersectImagePlane(Vector point, int & pixelX, int & pixelY)
+	Ray shootJitteredRay(int row, int col, float level, float offset)
+	{
+		float sx = (col + 0.5 + randf(-level / 2, level / 2) + offset) / imageWidth;
+		float sy = (row + 0.5 + randf(-level / 2, level / 2) + offset) / imageHeight;
+
+		Vector point = center + horizontal * (2.0f * sx - 1.0f) + vertical * (2.0f * sy - 1.0f);  // P = M + (2 * sx - 1) * X + (2 * sy - 1) * Y
+		Vector rayDirection = (point - position).normalize(); // P - E
+
+		return Ray(position, rayDirection);
+	}
+
+	bool IntersectImagePlane(Vector point, int& pixelX, int& pixelY)
 	{
 		Vector rayDir(point - position);
 		Vector horizontalOffset = rightDir * dot(rightDir, rayDir) + horizontal;

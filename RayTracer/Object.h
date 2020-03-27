@@ -16,7 +16,7 @@ public:
 	Vector orientation;
 	Vector scale;
 
-	Material *material;
+	Material* material;
 
 	Object()
 	{
@@ -24,7 +24,7 @@ public:
 		orientation = Vector(0.0, 0.0, 1.0);
 		scale = Vector(1.0);
 	}
-	Object(Primitive *primitive)
+	Object(Primitive* primitive)
 	{
 		position = Vector(0.0);
 		orientation = Vector(0.0, 0.0, 1.0);
@@ -32,22 +32,22 @@ public:
 		primitives.push_back(primitive);
 		primitive->parent = this;
 	}
-	void add(Primitive *primitive)
+	void add(Primitive* primitive)
 	{
 		primitives.push_back(primitive);
 		primitive->parent = this;
 	}
 	void rotate(float angle, Vector axis)
 	{
-		for (auto &primitive : primitives)
+		for (auto& primitive : primitives)
 			primitive->rotate(angle, axis);
 	}
 };
 
 
-static Object* loadOBJ(const char * path)
+static Object* loadOBJ(const char* path)
 {
-	Object *object = new Object;
+	Object* object = new Object;
 	object->material = new Material;
 
 	std::vector< unsigned int > vertexIndices, uvIndices, normalIndices;
@@ -94,7 +94,7 @@ static Object* loadOBJ(const char * path)
 				getline(is, index, ' ');
 				normalIndex[i] = stoi(index);
 			}
-			Triangle *triangle = new Triangle;
+			Triangle* triangle = new Triangle;
 			triangle->v0 = temp_vertices[vertexIndex[0] - 1];
 			triangle->v1 = temp_vertices[vertexIndex[1] - 1];
 			triangle->v2 = temp_vertices[vertexIndex[2] - 1];

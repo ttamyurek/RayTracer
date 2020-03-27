@@ -3,7 +3,7 @@
 #include <iostream>
 #include <random>
 
-bool Renderer::Render(Scene *scene, const char *outputFile)
+bool Renderer::Render(Scene* scene, const char* outputFile)
 {
 	this->scene = scene;
 	int imageWidth = scene->camera->imageWidth;
@@ -16,7 +16,7 @@ bool Renderer::Render(Scene *scene, const char *outputFile)
 		{
 			Vector pixelColor = RenderPixel(i, j);
 			frameBuffer.setPixel(i, j, pixelColor);
-			if(j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
+			if (j == 0) std::cout << "Pixel #" << i << ", " << j << std::endl;
 		}
 	}
 
@@ -29,23 +29,23 @@ Vector Renderer::RenderPixel(int row, int col)
 {
 	Ray ray = scene->camera->shootRay(row, col); // (Row, Col)
 	HitData hitData = scene->ClosestIntersection(ray);
-	Material *material = hitData.material;
+	Material* material = hitData.material;
 	Vector shadowFactor(1.0);
 	if (hitData.hit)
 	{
 		Vector color(0.0f);
 		Vector directIllumination(0.0f);
-		for (auto &light : scene->lights)
+		for (auto& light : scene->lights)
 		{
 			Vector lightDir = light->getDirection(hitData.position);
 			Vector reflectedDir = lightDir.reflect(hitData.normal).normalize();
 
 			Vector diffComp = material->diffuse * std::max(dot(lightDir, hitData.normal), 0.0f) * material->opacity;
 			Vector specComp = material->specular * pow(std::max(dot(reflectedDir, -ray.direction()), 0.0f), material->glossiness * 128.0f);
-			
+
 			Ray shadowRay(hitData.position, lightDir);
 			shadowFactor = scene->ShadowRay(shadowRay, light->distance(hitData.position));
-			directIllumination += shadowFactor * light->color * light->getAttenuation(hitData.position) * ( diffComp + specComp );
+			directIllumination += shadowFactor * light->color * light->getAttenuation(hitData.position) * (diffComp + specComp);
 		}
 		//Vector reflectedRayDir = ray.direction().reflect(hitData.position).normalize();
 		//ray = Ray(hitData.position, reflectedRayDir);
@@ -69,7 +69,7 @@ Vector Renderer::TracePath(int row, int col, int SPP)
 	{
 		Vector color(0.0f);
 		Vector directIllumination(0.0f);
-		for (auto &light : scene->lights)
+		for (auto& light : scene->lights)
 		{
 			for (int i = 0; i < SPP; i++)
 			{
@@ -96,9 +96,9 @@ Vector Renderer::TraceLight(int row, int col, int SPP)
 	{
 		Vector color(0.0f);
 		Vector directIllumination(0.0f);
-		for (auto &light : scene->lights)
+		for (auto& light : scene->lights)
 		{
-			AreaLight &areaLight = dynamic_cast<AreaLight&>(*light);
+			AreaLight& areaLight = dynamic_cast<AreaLight&>(*light);
 			int index = 0;
 			for (int i = 0; i < SPP; i++)
 			{
@@ -109,7 +109,7 @@ Vector Renderer::TraceLight(int row, int col, int SPP)
 				shadow += scene->ShadowRay(shadowRay, rayDir.length());
 			}
 			shadow /= SPP;
-			color += shadow * std::max(dot((hitData.position - areaLight.position).normalize(), areaLight.direction), 0.0f) * areaLight.color *areaLight.getAttenuation(hitData.position);
+			color += shadow * std::max(dot((hitData.position - areaLight.position).normalize(), areaLight.direction), 0.0f) * areaLight.color * areaLight.getAttenuation(hitData.position);
 		}
 		return color;
 	}
@@ -130,7 +130,7 @@ Vector Renderer::TraceRayFromPoint(Vector point)
 		return Vector(0.0);
 }
 
-bool Renderer::RenderRandom(Scene *scene, const char *outputFile)
+bool Renderer::RenderRandom(Scene* scene, const char* outputFile)
 {
 	this->scene = scene;
 	int imageWidth = scene->camera->imageWidth;
@@ -149,7 +149,7 @@ bool Renderer::RenderRandom(Scene *scene, const char *outputFile)
 	return true;
 }
 
-bool Renderer::RenderDepth(Scene *scene, const char *outputFile)
+bool Renderer::RenderDepth(Scene* scene, const char* outputFile)
 {
 	this->scene = scene;
 	int imageWidth = scene->camera->imageWidth;

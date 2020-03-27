@@ -147,7 +147,7 @@ public:
 			return Vector(0.0);
 		float r = this->length();
 		float theta = acos(z / r);
-		float phi = atan(y / x);
+		float phi = atan2(y, x);
 		return Vector(r, theta, phi);
 	}
 };
